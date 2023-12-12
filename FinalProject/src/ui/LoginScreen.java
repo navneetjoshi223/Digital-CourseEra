@@ -151,7 +151,7 @@ public class LoginScreen extends javax.swing.JPanel {
                     
                 } else if(userRole.equals(RoleType.SubjectSpecialist.toString())) {
                     System.out.println("subject specialist login");
-                    CurriculumDevelopmentJPanel cdjp = new CurriculumDevelopmentJPanel(mainWorkArea, userAccount,  cdorg,  business);
+                    CurriculumDevelopmentJPanel cdjp = new CurriculumDevelopmentJPanel(mainWorkArea, userAccount,  organization,  business);
                     mainWorkArea.add("CurriculumDevelopmentJPanel", cdjp);
                     CardLayout layout = (CardLayout) mainWorkArea.getLayout();
                     layout.next(mainWorkArea);
