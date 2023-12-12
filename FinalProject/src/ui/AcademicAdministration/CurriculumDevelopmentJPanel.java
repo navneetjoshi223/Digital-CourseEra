@@ -72,7 +72,7 @@ public class CurriculumDevelopmentJPanel extends javax.swing.JPanel {
 
         btnBack1 = new javax.swing.JButton();
         btnBack2 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lblTitle = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblWorkRequests = new javax.swing.JTable();
         lblCurr = new javax.swing.JLabel();
@@ -99,9 +99,9 @@ public class CurriculumDevelopmentJPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(204, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 153, 255));
-        jLabel1.setText("Curriculum Development");
+        lblTitle.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(0, 153, 255));
+        lblTitle.setText("Curriculum Development");
 
         tblWorkRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -154,7 +154,7 @@ public class CurriculumDevelopmentJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 298, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(lblTitle)
                 .addGap(288, 288, 288))
             .addGroup(layout.createSequentialGroup()
                 .addGap(54, 54, 54)
@@ -171,7 +171,7 @@ public class CurriculumDevelopmentJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBack))
                 .addGap(53, 53, 53)
                 .addComponent(lblCurr)
@@ -212,9 +212,9 @@ public class CurriculumDevelopmentJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnBack1;
     private javax.swing.JButton btnBack2;
     private javax.swing.JButton btnSendSoftwareRequest;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCurr;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tblWorkRequests;
     // End of variables declaration//GEN-END:variables
 }
