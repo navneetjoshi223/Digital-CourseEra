@@ -34,9 +34,9 @@ public class ViewNotifsFromMgmtJPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSoftwaresList = new javax.swing.JTable();
-        lblTitle = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         btnSendSoftwareRequest = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(51, 102, 0));
         setLayout(null);
@@ -67,15 +67,7 @@ public class ViewNotifsFromMgmtJPanel extends javax.swing.JPanel {
         }
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(100, 200, 543, 241);
-
-        lblTitle.setBackground(new java.awt.Color(255, 51, 51));
-        lblTitle.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblTitle.setForeground(new java.awt.Color(0, 51, 51));
-        lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/notify.jpg"))); // NOI18N
-        lblTitle.setText("View Notifications");
-        add(lblTitle);
-        lblTitle.setBounds(-110, 50, 1120, 790);
+        jScrollPane1.setBounds(110, 140, 543, 241);
 
         btnBack.setBackground(new java.awt.Color(0, 0, 0));
         btnBack.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
@@ -99,7 +91,11 @@ public class ViewNotifsFromMgmtJPanel extends javax.swing.JPanel {
             }
         });
         add(btnSendSoftwareRequest);
-        btnSendSoftwareRequest.setBounds(518, 424, 111, 35);
+        btnSendSoftwareRequest.setBounds(530, 390, 111, 35);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/notify.jpg"))); // NOI18N
+        add(jLabel1);
+        jLabel1.setBounds(60, 0, 1060, 610);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -117,8 +113,8 @@ public class ViewNotifsFromMgmtJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSendSoftwareRequest;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tblSoftwaresList;
     // End of variables declaration//GEN-END:variables
 }

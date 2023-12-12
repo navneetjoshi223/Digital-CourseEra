@@ -84,7 +84,9 @@ public class RequestLabEquipmentJPanel extends javax.swing.JPanel {
         btnBack1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(51, 102, 0));
+        setLayout(null);
 
+        tbkWorkRequest.setBackground(new java.awt.Color(255, 102, 51));
         tbkWorkRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -111,15 +113,22 @@ public class RequestLabEquipmentJPanel extends javax.swing.JPanel {
             tbkWorkRequest.getColumnModel().getColumn(2).setResizable(false);
         }
 
+        add(jScrollPane1);
+        jScrollPane1.setBounds(130, 210, 584, 284);
+
         lblSoftwaresList.setBackground(new java.awt.Color(0, 0, 0));
         lblSoftwaresList.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         lblSoftwaresList.setForeground(new java.awt.Color(0, 204, 204));
         lblSoftwaresList.setText("Active Applications:");
+        add(lblSoftwaresList);
+        lblSoftwaresList.setBounds(40, 100, 136, 18);
 
         lblTitle.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(153, 204, 0));
         lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/lab.jpg"))); // NOI18N
         lblTitle.setText("Request Lab Equipment");
+        add(lblTitle);
+        lblTitle.setBounds(30, 120, 790, 430);
 
         btnBack.setBackground(new java.awt.Color(204, 255, 153));
         btnBack.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
@@ -129,11 +138,17 @@ public class RequestLabEquipmentJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
+        add(btnBack);
+        btnBack.setBounds(41, 52, 80, 23);
+        add(txtQuantityNeeded);
+        txtQuantityNeeded.setBounds(0, 0, 0, 0);
 
         lblQuantityNeeded.setBackground(new java.awt.Color(0, 0, 0));
         lblQuantityNeeded.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         lblQuantityNeeded.setForeground(new java.awt.Color(204, 255, 153));
         lblQuantityNeeded.setText("Quantity:");
+        add(lblQuantityNeeded);
+        lblQuantityNeeded.setBounds(0, 0, 0, 0);
 
         btnSendSoftwareRequest.setBackground(new java.awt.Color(204, 255, 153));
         btnSendSoftwareRequest.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
@@ -143,8 +158,12 @@ public class RequestLabEquipmentJPanel extends javax.swing.JPanel {
                 btnSendSoftwareRequestActionPerformed(evt);
             }
         });
+        add(btnSendSoftwareRequest);
+        btnSendSoftwareRequest.setBounds(660, 560, 157, 23);
 
         jLabel1.setText("jLabel1");
+        add(jLabel1);
+        jLabel1.setBounds(0, 0, 0, 0);
 
         btnBack1.setBackground(new java.awt.Color(204, 255, 153));
         btnBack1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
@@ -154,52 +173,8 @@ public class RequestLabEquipmentJPanel extends javax.swing.JPanel {
                 btnBack1ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnBack)
-                        .addGap(191, 191, 191)
-                        .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54)
-                        .addComponent(btnBack1)
-                        .addContainerGap(106, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnSendSoftwareRequest)
-                        .addGap(140, 140, 140))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSoftwaresList))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBack)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnBack1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblSoftwaresList)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(btnSendSoftwareRequest)
-                .addContainerGap(123, Short.MAX_VALUE))
-        );
+        add(btnBack1);
+        btnBack1.setBounds(730, 60, 77, 23);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

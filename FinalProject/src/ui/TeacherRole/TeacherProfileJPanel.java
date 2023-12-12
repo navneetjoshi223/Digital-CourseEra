@@ -71,17 +71,17 @@ public class TeacherProfileJPanel extends javax.swing.JPanel {
             }
         });
         add(btnRequestLabEquipment);
-        btnRequestLabEquipment.setBounds(266, 336, 262, 40);
+        btnRequestLabEquipment.setBounds(260, 250, 262, 40);
 
         lblTitle.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(153, 204, 0));
         lblTitle.setText("Teacher Profile");
         add(lblTitle);
-        lblTitle.setBounds(318, 56, 171, 50);
+        lblTitle.setBounds(20, 180, 171, 50);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/teacher.jpg"))); // NOI18N
         add(jLabel1);
-        jLabel1.setBounds(-10, 10, 1390, 0);
+        jLabel1.setBounds(-10, -10, 1390, 470);
 
         btnBack.setBackground(new java.awt.Color(204, 255, 153));
         btnBack.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N

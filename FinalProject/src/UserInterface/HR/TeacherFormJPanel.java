@@ -97,7 +97,7 @@ public class TeacherFormJPanel extends javax.swing.JPanel {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/form.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
         add(jLabel2);
-        jLabel2.setBounds(-230, 200, 1070, 420);
+        jLabel2.setBounds(-100, 200, 1250, 580);
 
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
