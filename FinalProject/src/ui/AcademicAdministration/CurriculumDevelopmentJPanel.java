@@ -55,8 +55,6 @@ public class CurriculumDevelopmentJPanel extends javax.swing.JPanel {
             row[0] = request.getMessage();
             row[1] = request.getReceiver();
             row[2] = request.getStatus();
-            String result = ((InfrastructureWorkRequest) request).getResult();
-            row[3] = result == null ? "Waiting" : result;
             
             model.addRow(row);
         }
@@ -70,32 +68,15 @@ public class CurriculumDevelopmentJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnBack1 = new javax.swing.JButton();
-        btnBack2 = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblWorkRequests = new javax.swing.JTable();
-        lblCurr = new javax.swing.JLabel();
+        lblSubjectName = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
-        btnSendSoftwareRequest = new javax.swing.JButton();
-
-        btnBack1.setBackground(new java.awt.Color(204, 255, 153));
-        btnBack1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        btnBack1.setText("Refresh");
-        btnBack1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBack1ActionPerformed(evt);
-            }
-        });
-
-        btnBack2.setBackground(new java.awt.Color(204, 255, 153));
-        btnBack2.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        btnBack2.setText("Refresh");
-        btnBack2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBack2ActionPerformed(evt);
-            }
-        });
+        btnRequestCourseAdd = new javax.swing.JButton();
+        lblSubjectDesc = new javax.swing.JLabel();
+        txtSubjectDesc = new javax.swing.JTextField();
+        txtSubjectName = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(204, 255, 255));
 
@@ -105,17 +86,17 @@ public class CurriculumDevelopmentJPanel extends javax.swing.JPanel {
 
         tblWorkRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Message", "Sender", "Approval status", "Result"
+                "Message", "Sender", "Approval status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -129,8 +110,8 @@ public class CurriculumDevelopmentJPanel extends javax.swing.JPanel {
             tblWorkRequests.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        lblCurr.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lblCurr.setText("Curriculum conversation:");
+        lblSubjectName.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblSubjectName.setText("Name of subject:");
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -139,14 +120,17 @@ public class CurriculumDevelopmentJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnSendSoftwareRequest.setBackground(new java.awt.Color(204, 255, 153));
-        btnSendSoftwareRequest.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        btnSendSoftwareRequest.setText("Request Course Addition");
-        btnSendSoftwareRequest.addActionListener(new java.awt.event.ActionListener() {
+        btnRequestCourseAdd.setBackground(new java.awt.Color(204, 255, 153));
+        btnRequestCourseAdd.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        btnRequestCourseAdd.setText("Request Course Addition");
+        btnRequestCourseAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSendSoftwareRequestActionPerformed(evt);
+                btnRequestCourseAddActionPerformed(evt);
             }
         });
+
+        lblSubjectDesc.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblSubjectDesc.setText("Description:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -158,12 +142,24 @@ public class CurriculumDevelopmentJPanel extends javax.swing.JPanel {
                 .addGap(288, 288, 288))
             .addGroup(layout.createSequentialGroup()
                 .addGap(54, 54, 54)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnSendSoftwareRequest)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblCurr)
-                        .addComponent(btnBack)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 599, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 599, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblSubjectDesc)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnBack)
+                                .addComponent(lblSubjectName)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtSubjectName, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtSubjectDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(190, 190, 190)
+                .addComponent(btnRequestCourseAdd)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -173,48 +169,73 @@ public class CurriculumDevelopmentJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBack))
-                .addGap(53, 53, 53)
-                .addComponent(lblCurr)
-                .addGap(37, 37, 37)
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSubjectName)
+                    .addComponent(txtSubjectName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSubjectDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSubjectDesc))
+                .addGap(26, 26, 26)
+                .addComponent(btnRequestCourseAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(btnSendSoftwareRequest)
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addGap(36, 36, 36))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-        
-         workArea.remove(this);
+        workArea.remove(this);
         CardLayout layout=(CardLayout) workArea.getLayout();
         layout.previous(workArea);
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
+    private void btnRequestCourseAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestCourseAddActionPerformed
+
+        String subject = txtSubjectName.getText();
+        String desc = txtSubjectDesc.getText();
+        if(subject.equals("") || desc.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please enter both values.");
+            return;
+        }
+        CurriculumWorkRequest request = new CurriculumWorkRequest();
+//        request.setMessage(message);
+        request.setSubject(subject);
+        request.setDescription(desc);
+        request.setSender(userAccount);
+        request.setStatus("Sent");
+        
+//        Organization org = null;
+//        for (Organization organization : business.getOrganizationDirectory().getOrganizationList()){
+//            if (organization instanceof AcademicAdminOrganization){
+//                org = organization;
+//                break;
+//            }
+//        }
+
+        if (organization != null){
+            organization.getWorkQueue().getWorkRequestList().add(request);
+            userAccount.getWorkQueue().getWorkRequestList().add(request);
+        }
+        
         populateRequestTable();
-    }//GEN-LAST:event_btnBack1ActionPerformed
-
-    private void btnSendSoftwareRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendSoftwareRequestActionPerformed
-        CardLayout layout = (CardLayout) workArea.getLayout();
-        workArea.add("RequestLabTestJPanel", new CurriculumMessengerJPanel(workArea, userAccount, business));
-        layout.next(workArea);
-
-    }//GEN-LAST:event_btnSendSoftwareRequestActionPerformed
-
-    private void btnBack2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack2ActionPerformed
-        populateRequestTable();
-    }//GEN-LAST:event_btnBack2ActionPerformed
+        JOptionPane.showMessageDialog(null, "Request to add course sent.");
+        txtSubjectName.setText("");
+        txtSubjectDesc.setText("");
+    }//GEN-LAST:event_btnRequestCourseAddActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnBack1;
-    private javax.swing.JButton btnBack2;
-    private javax.swing.JButton btnSendSoftwareRequest;
+    private javax.swing.JButton btnRequestCourseAdd;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblCurr;
+    private javax.swing.JLabel lblSubjectDesc;
+    private javax.swing.JLabel lblSubjectName;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tblWorkRequests;
+    private javax.swing.JTextField txtSubjectDesc;
+    private javax.swing.JTextField txtSubjectName;
     // End of variables declaration//GEN-END:variables
 }

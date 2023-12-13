@@ -160,7 +160,7 @@ public class LoginScreen extends javax.swing.JPanel {
                     layout.next(mainWorkArea);
                     
                 } else if(userRole.equals(RoleType.AcademicDean.toString())) {
-                    AcademicAdminmistratorJPanel aajp = new AcademicAdminmistratorJPanel(mainWorkArea, userAccount, aaorg  ,  business);
+                    AcademicAdminmistratorJPanel aajp = new AcademicAdminmistratorJPanel(mainWorkArea, userAccount, organization,  business, aaorg);
                     mainWorkArea.add("AcademicAdminmistratorJPanel", aajp);
                     CardLayout layout = (CardLayout) mainWorkArea.getLayout();
                     layout.next(mainWorkArea);
