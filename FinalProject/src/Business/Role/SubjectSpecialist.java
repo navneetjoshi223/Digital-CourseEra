@@ -25,7 +25,7 @@ public class SubjectSpecialist extends Role {
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Business business) {
         this.type = RoleType.SubjectSpecialist;
-        return new CurriculumDevelopmentJPanel(userProcessContainer, account, (CurriculumDevelopmentOrganization) organization, business);
+        return new CurriculumDevelopmentJPanel(userProcessContainer, account, (CurriculumDevelopmentOrganization) organization,business);
     }
     
 }
