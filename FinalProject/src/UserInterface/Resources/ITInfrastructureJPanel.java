@@ -34,13 +34,13 @@ public class ITInfrastructureJPanel extends javax.swing.JPanel {
     /**
      * Creates new form LabAssistantWorkAreaJPanel
      */
-    public ITInfrastructureJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Business business) {
+    public ITInfrastructureJPanel(JPanel userProcessContainer, UserAccount account, InfrastructureOrganization infraOrganization, Business business) {
         initComponents();
 
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.business = business;
-        this.infraOrganization = (InfrastructureOrganization) organization;
+        this.infraOrganization = infraOrganization;
 
         populateTable();
     }

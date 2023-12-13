@@ -39,7 +39,8 @@ public class HRJPanel extends javax.swing.JPanel {
     public HRJPanel(JPanel mainWorkArea, UserAccount account, HumanResourceOrganization humanResourceOrganization, Business business) {
         initComponents();
         this.mainWorkArea = mainWorkArea;
-        this.teach = teach;
+        this.teach = business.getTeacherDirectory();
+        this.humanResourceOrganization=humanResourceOrganization;
         populateTable();
     }
 
@@ -173,7 +174,7 @@ public class HRJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-               
+        
         JOptionPane.showMessageDialog(null, "Teacher Recrited Successfully.", "Information", JOptionPane.INFORMATION_MESSAGE);
         
   
