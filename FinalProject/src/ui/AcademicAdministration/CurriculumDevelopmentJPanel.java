@@ -32,14 +32,15 @@ public class CurriculumDevelopmentJPanel extends javax.swing.JPanel {
     private Organization organization;
     private Business business;
     private UserAccount userAccount;
+    CurriculumDevelopmentOrganization curriculumOrganization;
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
-    public CurriculumDevelopmentJPanel(JPanel workArea, UserAccount account,Organization organization, Business business) {
+    public CurriculumDevelopmentJPanel(JPanel workArea, UserAccount account,CurriculumDevelopmentOrganization curriculumOrganization, Business business) {
         initComponents();
         
         this.workArea = workArea;
-        this.organization = organization;
+        this.curriculumOrganization = curriculumOrganization;
         this.business = business;
         this.userAccount = account;
         
@@ -207,16 +208,16 @@ public class CurriculumDevelopmentJPanel extends javax.swing.JPanel {
         request.setSender(userAccount);
         request.setStatus("Sent");
         
-//        Organization org = null;
-//        for (Organization organization : business.getOrganizationDirectory().getOrganizationList()){
-//            if (organization instanceof AcademicAdminOrganization){
-//                org = organization;
-//                break;
-//            }
-//        }
+        Organization org = null;
+        for (Organization organization : business.getOrganizationDirectory().getOrganizationList()){
+            if (organization instanceof AcademicAdminOrganization){
+                org = organization;
+                break;
+            }
+        }
 
-        if (organization != null){
-            organization.getWorkQueue().getWorkRequestList().add(request);
+        if (org != null){
+            org.getWorkQueue().getWorkRequestList().add(request);
             userAccount.getWorkQueue().getWorkRequestList().add(request);
         }
         
