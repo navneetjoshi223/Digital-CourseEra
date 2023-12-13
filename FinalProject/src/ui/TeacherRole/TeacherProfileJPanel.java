@@ -22,14 +22,14 @@ public class TeacherProfileJPanel extends javax.swing.JPanel {
      */
     private JPanel workArea;
     UserAccount userAccount;
-    Organization organization;
+    StaffOrganization staffOrganization;
     Business business;
     
-    public TeacherProfileJPanel(JPanel workArea, UserAccount account, Organization organization, Business business) {
+    public TeacherProfileJPanel(JPanel workArea, UserAccount account, StaffOrganization staffOrganization, Business business) {
         initComponents();
  this.workArea = workArea;
     this.userAccount = account;
-    this.organization = organization;
+    this.staffOrganization = staffOrganization;
     this.business = business;
     }
 
@@ -105,7 +105,7 @@ public class TeacherProfileJPanel extends javax.swing.JPanel {
 
     private void btnRequestLabEquipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestLabEquipmentActionPerformed
         // TODO add your handling code here:
-        RequestLabEquipmentJPanel requestLabEquipJPanel = new RequestLabEquipmentJPanel(workArea,userAccount,organization,business);
+        RequestLabEquipmentJPanel requestLabEquipJPanel = new RequestLabEquipmentJPanel(workArea,userAccount,staffOrganization,business);
         workArea.add("RequestLabEquipmentJPanel", requestLabEquipJPanel);
         CardLayout layout = (CardLayout) workArea.getLayout();
         layout.next(workArea);
