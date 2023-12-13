@@ -6,6 +6,7 @@ package ui.AcademicAdministration;
 
 import Business.Business;
 import Business.Organization.AcademicAdminOrganization;
+import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.CurriculumWorkRequest;
 import Business.WorkQueue.LabTestWorkRequest;
@@ -24,24 +25,24 @@ public class AcademicAdminmistratorJPanel extends javax.swing.JPanel {
     /**
      * Creates new form AcademicAdminmistratorJPanel
      */
-    
-   
    
     private JPanel userProcessContainer;
     private Business business;
     private UserAccount userAccount;
-    private AcademicAdminOrganization organization;
+    private Organization org;
+    private AcademicAdminOrganization aaOrganization;
 
     /**
      * Creates new form LabAssistantWorkAreaJPanel
      */
-    public AcademicAdminmistratorJPanel(JPanel userProcessContainer, UserAccount account, AcademicAdminOrganization organization, Business business) {
+    public AcademicAdminmistratorJPanel(JPanel userProcessContainer, UserAccount account, Organization org, Business business, AcademicAdminOrganization aaOrganization) {
         initComponents();
 
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.business = business;
-        this.organization = (AcademicAdminOrganization) organization;
+        this.org = org;
+        this.aaOrganization = aaOrganization;
 
         populateTable();
     }
@@ -50,8 +51,10 @@ public class AcademicAdminmistratorJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblWorkRequest.getModel();
 
         model.setRowCount(0);
-
-        for (WorkRequest request : organization.getWorkQueue().getWorkRequestList()) {
+        System.out.println(org);
+        System.out.println(aaOrganization);
+        
+        for (WorkRequest request : org.getWorkQueue().getWorkRequestList()) {
             Object[] row = new Object[4];
             row[0] = request;
             row[1] = request.getSender().getEmployee().getName();
