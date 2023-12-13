@@ -29,32 +29,32 @@ public class AcademicAdminmistratorJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private Business business;
     private UserAccount userAccount;
-    private Organization org;
+    //private Organization org;
     private AcademicAdminOrganization aaOrganization;
 
     /**
      * Creates new form LabAssistantWorkAreaJPanel
      */
-    public AcademicAdminmistratorJPanel(JPanel userProcessContainer, UserAccount account, Organization org, Business business, AcademicAdminOrganization aaOrganization) {
+   
+
+    public AcademicAdminmistratorJPanel(JPanel userProcessContainer, UserAccount account, AcademicAdminOrganization academicAdminOrganization, Business business) {
         initComponents();
 
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.business = business;
-        this.org = org;
-        this.aaOrganization = aaOrganization;
+//        this.org = org;
+        this.aaOrganization = academicAdminOrganization;
 
-        populateTable();
-    }
+        populateTable();    }
 
     public void populateTable() {
         DefaultTableModel model = (DefaultTableModel) tblWorkRequest.getModel();
 
         model.setRowCount(0);
-        System.out.println(org);
         System.out.println(aaOrganization);
         
-        for (WorkRequest request : org.getWorkQueue().getWorkRequestList()) {
+        for (WorkRequest request : aaOrganization.getWorkQueue().getWorkRequestList()) {
             Object[] row = new Object[4];
             row[0] = request;
             row[1] = request.getSender().getEmployee().getName();

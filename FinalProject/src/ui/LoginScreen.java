@@ -43,9 +43,9 @@ public class LoginScreen extends javax.swing.JPanel {
         
         this.mainWorkArea = mainWorkArea;
         this.business = business;
-        this.cdorg = new CurriculumDevelopmentOrganization();
-        this.aaorg = new AcademicAdminOrganization();
-        this.teach = new TeacherDirectory();
+//        this.cdorg = new CurriculumDevelopmentOrganization();
+//        this.aaorg = new AcademicAdminOrganization();
+//        this.teach = new TeacherDirectory();
     }
 
     /**
@@ -144,52 +144,14 @@ public class LoginScreen extends javax.swing.JPanel {
         for (Organization organization : business.getOrganizationDirectory().getOrganizationList()){
             userAccount = organization.getUserAccountDirectory().authenticateUser(userName, password);
             if (userAccount != null) {
-                String userRole = userAccount.getRole().toString();
-                if(userRole.equals(RoleType.Admin.toString())) {
+//                String userRole = userAccount.getRole().toString();
+//                if(userRole.equals(RoleType.Admin.toString())) {
                     System.out.println("admin login");
                     JPanel mainScreen = new MainScreen(mainWorkArea, userAccount, organization, business);
                     mainWorkArea.add("MainScreen", mainScreen);
                     CardLayout layout = (CardLayout) mainWorkArea.getLayout();
                     layout.next(mainWorkArea);
-                    
-                } else if(userRole.equals(RoleType.SubjectSpecialist.toString())) {
-                    System.out.println("subject specialist login");
-                    CurriculumDevelopmentJPanel cdjp = new CurriculumDevelopmentJPanel(mainWorkArea, userAccount,  organization,  business);
-                    mainWorkArea.add("CurriculumDevelopmentJPanel", cdjp);
-                    CardLayout layout = (CardLayout) mainWorkArea.getLayout();
-                    layout.next(mainWorkArea);
-                    
-                } else if(userRole.equals(RoleType.AcademicDean.toString())) {
-                    AcademicAdminmistratorJPanel aajp = new AcademicAdminmistratorJPanel(mainWorkArea, userAccount, organization,  business, aaorg);
-                    mainWorkArea.add("AcademicAdminmistratorJPanel", aajp);
-                    CardLayout layout = (CardLayout) mainWorkArea.getLayout();
-                    layout.next(mainWorkArea);
-                    
-                } else if(userRole.equals(RoleType.HRRep.toString())) {
-                    HRJPanel hrjp = new HRJPanel(mainWorkArea,teach);
-                    mainWorkArea.add("HRJPanel", hrjp);
-                    CardLayout layout = (CardLayout) mainWorkArea.getLayout();
-                    layout.next(mainWorkArea);
-                    
-                } else if(userRole.equals(RoleType.ITCoordinator.toString())) {
-                    ITInfrastructureJPanel iijp = new ITInfrastructureJPanel(mainWorkArea,userAccount,organization,business);
-                    mainWorkArea.add("ITInfrastructureJPanel", iijp);
-                    CardLayout layout = (CardLayout) mainWorkArea.getLayout();
-                    layout.next(mainWorkArea);
-                    
-                } else if(userRole.equals(RoleType.Finance.toString())) {
-//                    HandleFinancesJPanel hfjp = new HandleFinancesJPanel(mainWorkArea,);
-//                    mainWorkArea.add("HandleFinancesJPanel", hfjp);
-//                    CardLayout layout = (CardLayout) mainWorkArea.getLayout();
-//                    layout.next(mainWorkArea);
-                    
-                } else if(userRole.equals(RoleType.Teacher.toString())) {
-                    TeacherProfileJPanel tpjp = new TeacherProfileJPanel(mainWorkArea, userAccount, organization , business);
-                    mainWorkArea.add("TeacherProfileJPanel", tpjp);
-                    CardLayout layout = (CardLayout) mainWorkArea.getLayout();
-                    layout.next(mainWorkArea);
-                } 
-                
+//                }  
                 
                 flag = true;
                 break;

@@ -6,6 +6,7 @@ package ui.FinanceManagerRole;
 
 import Business.Business;
 import Business.Organization.AcademicAdminOrganization;
+import Business.Organization.FinanceOrganization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 
@@ -19,15 +20,21 @@ public class HandleFinancesJPanel extends javax.swing.JPanel {
      * Creates new form HandleFinancesJPanel
      */
     JPanel workArea;
+     UserAccount userAccount;
+     FinanceOrganization financeOrganization;
+      Business business;
+     
     
-    public HandleFinancesJPanel(JPanel workArea) {
-        initComponents();
-        this.workArea = workArea;
+   
+
+    public HandleFinancesJPanel(JPanel mainWorkArea, UserAccount userAccount, FinanceOrganization financeOrganization, Business business) {
+            this.workArea=mainWorkArea;
+            this.userAccount=userAccount;
+            this.financeOrganization=financeOrganization;
+            this.business=business;
     }
 
-    public HandleFinancesJPanel(JPanel mainWorkArea, JPanel mainWorkArea0, UserAccount userAccount, AcademicAdminOrganization aaorg, Business business) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+  
 
     /**
      * This method is called from within the constructor to initialize the form.

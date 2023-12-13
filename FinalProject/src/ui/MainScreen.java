@@ -125,11 +125,10 @@ public class MainScreen extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void initUserWorkArea() {
-        
-//        lblWelcome.setText("Welcome " + ((userAccount.getEmployee() != null) ? userAccount.getEmployee().getName() : userAccount.getUsername()) + "!");
+        lblWelcome.setText("Welcome " + ((userAccount.getEmployee() != null) ? userAccount.getEmployee().getName() : userAccount.getUsername()) + "!");
         
         CardLayout layout = (CardLayout) workArea.getLayout();
-        workArea.add("workArea", new EnterpriseSelectJPanel(workArea, userAccount, organization, business));
+        workArea.add("workArea", userAccount.getRole().createWorkArea(workArea, userAccount, organization, business));
         layout.next(workArea);
     }
 
