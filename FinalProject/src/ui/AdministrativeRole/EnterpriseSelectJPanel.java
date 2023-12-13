@@ -11,6 +11,7 @@ import Business.Enterprise.Enterprise.EnterpriseType;
 import Business.Enterprise.PrivateCollegeEnterprise;
 import Business.Enterprise.SchoolEnterprise;
 import Business.Enterprise.StateCollegeEnterprise;
+import Business.Organization.AdminOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -24,12 +25,12 @@ public class EnterpriseSelectJPanel extends javax.swing.JPanel {
 
    private JPanel workArea;
     private UserAccount userAccount;
-    private Organization organization;
+    private AdminOrganization organization;
     private Business business;
     private Enterprise enterprise;
     
 
-    public EnterpriseSelectJPanel(JPanel workArea, UserAccount userAccount, Organization organization, Business business) {
+    public EnterpriseSelectJPanel(JPanel workArea, UserAccount userAccount, AdminOrganization organization, Business business) {
 initComponents();
 
         this.workArea = workArea;
@@ -126,7 +127,7 @@ initComponents();
         
         
         //workArea.add("Admin", userAccount.getRole().createWorkArea(workArea, userAccount, organization, business, enterprise));
-        AdminWorkAreaJPanel adminPanel = new AdminWorkAreaJPanel(workArea, business, enterprise);
+        AdminWorkAreaJPanel adminPanel = new AdminWorkAreaJPanel(workArea, userAccount, organization, business);
         workArea.add("AdminWorkAreaJPanel", adminPanel);
         CardLayout layout = (CardLayout) workArea.getLayout();
         layout.next(workArea);

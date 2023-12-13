@@ -18,7 +18,7 @@ public class AdminRole extends Role {
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Business business) {
       this.type = RoleType.Admin;
-        return new AdminWorkAreaJPanel(userProcessContainer, account, (AdminOrganization) organization,business);
+        return new EnterpriseSelectJPanel(userProcessContainer, account, (AdminOrganization) organization,business);
     }
 
 }
