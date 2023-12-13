@@ -4,8 +4,11 @@
  */
 package UserInterface.HR;
 
+import Business.Business;
+import Business.Organization.HumanResourceOrganization;
 import Business.Teacher.Teacher;
 import Business.Teacher.TeacherDirectory;
+import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -23,17 +26,24 @@ public class HRJPanel extends javax.swing.JPanel {
      */
 
     JPanel mainWorkArea;
-    TeacherDirectory teach;
+   
+    UserAccount useraccount;
+    HumanResourceOrganization humanResourceOrganization;
+    Business business;
+    
+     TeacherDirectory teach;
     private Teacher teacher;
     
-    public HRJPanel(JPanel mainWorkArea,TeacherDirectory teach) {
+   
+
+    public HRJPanel(JPanel mainWorkArea, UserAccount account, HumanResourceOrganization humanResourceOrganization, Business business) {
         initComponents();
         this.mainWorkArea = mainWorkArea;
         this.teach = teach;
         populateTable();
-       
-
     }
+
+   
 
     
     

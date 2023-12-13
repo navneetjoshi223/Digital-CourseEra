@@ -2,10 +2,12 @@ package Business.Role;
 
 import Business.Business;
 import Business.Enterprise.Enterprise;
+import Business.Organization.AdminOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 import ui.AdministrativeRole.AdminWorkAreaJPanel;
+import ui.AdministrativeRole.EnterpriseSelectJPanel;
 
 public class AdminRole extends Role {
  
@@ -14,8 +16,9 @@ public class AdminRole extends Role {
     }
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Business business, Enterprise enterprise) {
-     return null;
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Business business) {
+      this.type = RoleType.Admin;
+        return new AdminWorkAreaJPanel(userProcessContainer, account, (AdminOrganization) organization,business);
     }
 
 }

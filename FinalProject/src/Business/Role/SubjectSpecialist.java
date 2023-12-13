@@ -6,9 +6,11 @@ package Business.Role;
 
 import Business.Business;
 import Business.Enterprise.Enterprise;
+import Business.Organization.CurriculumDevelopmentOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import ui.AcademicAdministration.CurriculumDevelopmentJPanel;
 
 /**
  *
@@ -21,8 +23,9 @@ public class SubjectSpecialist extends Role {
     }
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Business business, Enterprise enterprise) {
-        return null;
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Business business) {
+        this.type = RoleType.SubjectSpecialist;
+        return new CurriculumDevelopmentJPanel(userProcessContainer, account, (CurriculumDevelopmentOrganization) organization, business);
     }
     
 }
