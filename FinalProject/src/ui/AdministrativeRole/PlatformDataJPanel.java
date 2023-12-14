@@ -20,19 +20,27 @@ public class PlatformDataJPanel extends javax.swing.JPanel {
      */
     private JPanel workArea;
     private Business business;
-    
+
     public PlatformDataJPanel(JPanel workArea, Business business) {
         initComponents();
         this.workArea = workArea;
         this.business = business;
         populateSystemData();
     }
-    
+
     private void populateSystemData() {
         progressBar.setStringPainted(true);
         progressBar.setValue(8); // Set actual value of recruited teachers
         progressBar.setForeground(Color.BLUE);
         progressBar.setBackground(Color.LIGHT_GRAY);
+//        lblEmp.setText(business.getOrganizationDirectory().getOrganizationList().);
+// Assuming these are JLabels or JTextFields
+       // Assuming these are JLabels or JTextFields
+jTextField1.setText(business.getBudget() != null ? String.valueOf(business.getBudget()) : "");
+int teacherDirectorySize = business.getTeacherDirectory().lengthOf();
+txtTeachersRecruited.setText(teacherDirectorySize > 0 ? String.valueOf(teacherDirectorySize) : "");
+txtOverallFundsForResources.setText(String.valueOf(business.getExpenseDirectory().getSumOfInventoryAmounts()));
+txtBudgetTeachers.setText(String.valueOf(business.getExpenseDirectory().getSumOfResourceAmounts()));
     }
 
     /**
@@ -54,13 +62,14 @@ public class PlatformDataJPanel extends javax.swing.JPanel {
         lblBudgetTeachers = new javax.swing.JLabel();
         lblEnrollmentTargets = new javax.swing.JLabel();
         lblTotalEmployees = new javax.swing.JLabel();
-        lblTarget = new javax.swing.JLabel();
         lblUserMetrics = new javax.swing.JLabel();
         txtTeachersRecruited = new javax.swing.JTextField();
         txtBudgetTeachers = new javax.swing.JTextField();
-        lblTotalTeachers = new javax.swing.JLabel();
         progressBar = new javax.swing.JProgressBar();
         lblTitle = new javax.swing.JLabel();
+        lblEmp = new javax.swing.JTextField();
+        lblTeachersRecruited1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 204, 204));
 
@@ -88,7 +97,7 @@ public class PlatformDataJPanel extends javax.swing.JPanel {
         lblOverallFundsForResources.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         lblOverallFundsForResources.setForeground(new java.awt.Color(0, 204, 204));
         lblOverallFundsForResources.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblOverallFundsForResources.setText("Overall funds granted for resources:");
+        lblOverallFundsForResources.setText("Overall funds granted for resource:");
 
         lblTeachersRecruited.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         lblTeachersRecruited.setForeground(new java.awt.Color(0, 204, 204));
@@ -103,15 +112,11 @@ public class PlatformDataJPanel extends javax.swing.JPanel {
 
         lblEnrollmentTargets.setFont(new java.awt.Font("Noteworthy", 3, 20)); // NOI18N
         lblEnrollmentTargets.setForeground(new java.awt.Color(0, 102, 102));
-        lblEnrollmentTargets.setText("Yearly Teacher Enrollment Targets");
+        lblEnrollmentTargets.setText("Percentage budget spent");
 
         lblTotalEmployees.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         lblTotalEmployees.setForeground(new java.awt.Color(0, 204, 204));
         lblTotalEmployees.setText("Total Employess in the system:");
-
-        lblTarget.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        lblTarget.setForeground(new java.awt.Color(0, 204, 204));
-        lblTarget.setText("Target: 100 teachers");
 
         lblUserMetrics.setFont(new java.awt.Font("Noteworthy", 3, 20)); // NOI18N
         lblUserMetrics.setForeground(new java.awt.Color(0, 102, 102));
@@ -121,10 +126,6 @@ public class PlatformDataJPanel extends javax.swing.JPanel {
 
         txtBudgetTeachers.setEnabled(false);
 
-        lblTotalTeachers.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        lblTotalTeachers.setForeground(new java.awt.Color(0, 204, 204));
-        lblTotalTeachers.setText("Total Teachers recruited for the enterprise:");
-
         progressBar.setBackground(new java.awt.Color(204, 204, 204));
         progressBar.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         progressBar.setToolTipText("25%");
@@ -133,61 +134,68 @@ public class PlatformDataJPanel extends javax.swing.JPanel {
         lblTitle.setForeground(new java.awt.Color(0, 51, 102));
         lblTitle.setText("Platform Summarized Data");
 
+        lblTeachersRecruited1.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        lblTeachersRecruited1.setForeground(new java.awt.Color(0, 204, 204));
+        lblTeachersRecruited1.setText("Overall budget");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
+                .addContainerGap(116, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblUserMetrics)
+                            .addComponent(lblTotalEmployees)
+                            .addComponent(btnBack)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(txtTotalStudents, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(40, 40, 40)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblUserMetrics)
-                                    .addComponent(lblTotalEmployees)
-                                    .addComponent(btnBack)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lblFinancialMetrics)
-                                .addComponent(txtTotalStudents, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(220, 220, 220)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblTotalTeachers)
-                                    .addComponent(txtTotalProfessors, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addComponent(lblTitle)))
-                        .addGap(0, 59, Short.MAX_VALUE))
+                                .addGap(6, 6, 6)
+                                .addComponent(lblTeachersRecruited1))
+                            .addComponent(lblFinancialMetrics))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(159, 159, 159)
+                            .addComponent(txtTotalProfessors, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(33, 33, 33)
+                            .addComponent(lblTitle)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(lblEnrollmentTargets)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 302, Short.MAX_VALUE)))
+                .addGap(76, 76, 76))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTarget)
-                            .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(99, 99, 99)
-                                .addComponent(lblTeachersRecruited))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblOverallFundsForResources, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblBudgetTeachers, javax.swing.GroupLayout.Alignment.TRAILING))))
-                        .addGap(31, 31, 31)
+                                .addComponent(lblBudgetTeachers)
+                                .addGap(31, 31, 31))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(57, 57, 57)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblTeachersRecruited)
+                                    .addComponent(lblOverallFundsForResources))
+                                .addGap(39, 39, 39)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtBudgetTeachers, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtTeachersRecruited, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtOverallFundsForResources, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(txtOverallFundsForResources, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(134, 134, 134)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblEnrollmentTargets)
+                            .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 134, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,52 +212,59 @@ public class PlatformDataJPanel extends javax.swing.JPanel {
                         .addComponent(txtTotalStudents, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblTotalTeachers)
-                            .addComponent(lblTotalEmployees))
+                            .addComponent(lblTotalEmployees)
+                            .addComponent(lblEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(txtTotalProfessors, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblFinancialMetrics)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTeachersRecruited)
-                    .addComponent(txtTeachersRecruited, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblOverallFundsForResources)
-                    .addComponent(txtOverallFundsForResources, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblBudgetTeachers)
-                    .addComponent(txtBudgetTeachers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTeachersRecruited1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblBudgetTeachers, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtTeachersRecruited, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblTeachersRecruited))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addComponent(lblOverallFundsForResources))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtOverallFundsForResources, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtBudgetTeachers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(59, 59, 59)
                 .addComponent(lblEnrollmentTargets)
                 .addGap(18, 18, 18)
-                .addComponent(lblTarget)
-                .addGap(29, 29, 29)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         workArea.remove(this);
-        CardLayout layout=(CardLayout) workArea.getLayout();
+        CardLayout layout = (CardLayout) workArea.getLayout();
         layout.previous(workArea);
     }//GEN-LAST:event_btnBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblBudgetTeachers;
+    private javax.swing.JTextField lblEmp;
     private javax.swing.JLabel lblEnrollmentTargets;
     private javax.swing.JLabel lblFinancialMetrics;
     private javax.swing.JLabel lblOverallFundsForResources;
-    private javax.swing.JLabel lblTarget;
     private javax.swing.JLabel lblTeachersRecruited;
+    private javax.swing.JLabel lblTeachersRecruited1;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblTotalEmployees;
-    private javax.swing.JLabel lblTotalTeachers;
     private javax.swing.JLabel lblUserMetrics;
     private javax.swing.JProgressBar progressBar;
     private javax.swing.JTextField txtBudgetTeachers;

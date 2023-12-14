@@ -58,7 +58,6 @@ public class TeacherFormJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         txtname = new javax.swing.JTextField();
         txtSubmit = new javax.swing.JButton();
-        btnUpload = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -91,17 +90,6 @@ public class TeacherFormJPanel extends javax.swing.JPanel {
         });
         add(txtSubmit);
         txtSubmit.setBounds(250, 240, 160, 29);
-
-        btnUpload.setBackground(new java.awt.Color(0, 102, 102));
-        btnUpload.setForeground(new java.awt.Color(255, 255, 255));
-        btnUpload.setText("Upload Resume");
-        btnUpload.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUploadActionPerformed(evt);
-            }
-        });
-        add(btnUpload);
-        btnUpload.setBounds(250, 210, 160, 23);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/form.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -145,44 +133,6 @@ public class TeacherFormJPanel extends javax.swing.JPanel {
     private void txtnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnameActionPerformed
-
-    private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
-          // TODO add your handling code here:
-        final JFileChooser fileChooser = new JFileChooser();
-    // Set a filter for only PDF files
-    fileChooser.setAcceptAllFileFilterUsed(false);
-    fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("PDF Documents", "pdf"));
-    
-    // Open the file chooser dialog
-    int returnValue = fileChooser.showOpenDialog(null);
-    
-    // If a file was selected (i.e., the user didn't cancel)
-    if (returnValue == JFileChooser.APPROVE_OPTION) {
-        File selectedFile = fileChooser.getSelectedFile();
-        // Call a method to handle the file upload logic
-        uploadFile(selectedFile);
-    }
-    }
-    private void uploadFile(File file) {
-    // Define the directory where you want to save the uploaded files
-    // Make sure this directory exists on your system
-    File destDir = new File("path/to/destination/directory");
-    if (!destDir.exists()) {
-        destDir.mkdirs(); // If the directory doesn't exist, create it.
-    }
-
-    // Create a File object for the destination
-    File destFile = new File(destDir, file.getName());
-
-    // Use Java NIO Files class to copy the file
-    try {
-        Files.copy(file.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-        JOptionPane.showMessageDialog(null, "File uploaded successfully!");
-    } catch (IOException ex) {
-        JOptionPane.showMessageDialog(null, "Error uploading file: " + ex.getMessage());
-    }
-
-    }//GEN-LAST:event_btnUploadActionPerformed
 
     private void txtSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSubmitActionPerformed
         // TODO add your handling code here:
@@ -242,7 +192,6 @@ FinanceWorkRequest request = new FinanceWorkRequest();
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnUpload;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

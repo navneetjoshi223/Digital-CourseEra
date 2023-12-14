@@ -30,6 +30,25 @@ public class ExpenseDirectory {
         expenses.add(newExpense);
         return newExpense;
     }
+    
+    
+     public int getSumOfAmountsByType(String expenseType) {
+        int sum = 0;
+        for (Expense expense : expenses) {
+            if (expense.getType().equalsIgnoreCase(expenseType)) {
+                sum += expense.getAmount();
+            }
+        }
+        return sum;
+    }
+
+    public int getSumOfResourceAmounts() {
+        return getSumOfAmountsByType("resource");
+    }
+
+    public int getSumOfInventoryAmounts() {
+        return getSumOfAmountsByType("inventory");
+    }
 
    
 
