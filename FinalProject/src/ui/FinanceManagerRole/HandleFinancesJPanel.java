@@ -79,11 +79,10 @@ public class HandleFinancesJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblFinancingRequests = new javax.swing.JTable();
         lblFinancingRequests = new javax.swing.JLabel();
-        btnApproveBudget1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        txtTotalBudget1 = new javax.swing.JTextField();
+        btnApproveBudget = new javax.swing.JButton();
         txtSalary = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        btnRefresh = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 255));
         setLayout(null);
@@ -102,7 +101,7 @@ public class HandleFinancesJPanel extends javax.swing.JPanel {
 
         txtTotalBudget.setEnabled(false);
         add(txtTotalBudget);
-        txtTotalBudget.setBounds(340, 120, 200, 23);
+        txtTotalBudget.setBounds(330, 110, 210, 30);
 
         tblFinancingRequests.setBackground(new java.awt.Color(117, 205, 255));
         tblFinancingRequests.setForeground(new java.awt.Color(0, 102, 204));
@@ -141,40 +140,45 @@ public class HandleFinancesJPanel extends javax.swing.JPanel {
         add(lblFinancingRequests);
         lblFinancingRequests.setBounds(107, 184, 215, 17);
 
-        btnApproveBudget1.setBackground(new java.awt.Color(102, 51, 255));
-        btnApproveBudget1.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-        btnApproveBudget1.setForeground(new java.awt.Color(255, 255, 255));
-        btnApproveBudget1.setText("Approve Budget");
-        btnApproveBudget1.setToolTipText("");
-        btnApproveBudget1.addActionListener(new java.awt.event.ActionListener() {
+        btnApproveBudget.setBackground(new java.awt.Color(102, 51, 255));
+        btnApproveBudget.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        btnApproveBudget.setForeground(new java.awt.Color(255, 255, 255));
+        btnApproveBudget.setText("Approve Budget");
+        btnApproveBudget.setToolTipText("");
+        btnApproveBudget.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnApproveBudget1ActionPerformed(evt);
+                btnApproveBudgetActionPerformed(evt);
             }
         });
-        add(btnApproveBudget1);
-        btnApproveBudget1.setBounds(570, 500, 146, 40);
+        add(btnApproveBudget);
+        btnApproveBudget.setBounds(560, 490, 150, 30);
+
+        txtSalary.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSalaryActionPerformed(evt);
+            }
+        });
+        add(txtSalary);
+        txtSalary.setBounds(340, 490, 200, 30);
+
+        btnRefresh.setBackground(new java.awt.Color(102, 51, 255));
+        btnRefresh.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        btnRefresh.setForeground(new java.awt.Color(255, 255, 255));
+        btnRefresh.setText("Refresh");
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
+            }
+        });
+        add(btnRefresh);
+        btnRefresh.setBounds(598, 180, 100, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fin.jpg"))); // NOI18N
         add(jLabel1);
-        jLabel1.setBounds(-390, 40, 1850, 580);
-
-        txtTotalBudget1.setEnabled(false);
-        add(txtTotalBudget1);
-        txtTotalBudget1.setBounds(340, 120, 200, 23);
-        add(txtSalary);
-        txtSalary.setBounds(820, 510, 64, 23);
-
-        jButton3.setText("Refresh");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        add(jButton3);
-        jButton3.setBounds(840, 150, 78, 23);
+        jLabel1.setBounds(10, 0, 910, 620);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnApproveBudget1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveBudget1ActionPerformed
+    private void btnApproveBudgetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveBudgetActionPerformed
     int selectedRow = tblFinancingRequests.getSelectedRow();
 
     if (selectedRow >= 0) {
@@ -201,18 +205,22 @@ public class HandleFinancesJPanel extends javax.swing.JPanel {
     }
 
     populateTable();
-    }//GEN-LAST:event_btnApproveBudget1ActionPerformed
+    }//GEN-LAST:event_btnApproveBudgetActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         // TODO add your handling code here:
 
         populateTable();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnRefreshActionPerformed
+
+    private void txtSalaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalaryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSalaryActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnApproveBudget1;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnApproveBudget;
+    private javax.swing.JButton btnRefresh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblFinancingRequests;
@@ -221,6 +229,5 @@ public class HandleFinancesJPanel extends javax.swing.JPanel {
     private javax.swing.JTable tblFinancingRequests;
     private javax.swing.JTextField txtSalary;
     private javax.swing.JTextField txtTotalBudget;
-    private javax.swing.JTextField txtTotalBudget1;
     // End of variables declaration//GEN-END:variables
 }
