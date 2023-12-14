@@ -32,7 +32,7 @@ public abstract class Organization {
 //                return new AdminOrganization();
 //            }
         },
-        CurricumDev("Curricum Development") {
+        CurriculumDev("Curriculum Development") {
 //            //@Override
 //            public Organization createOrganization() {
 //                return new AdminOrganization();
@@ -41,7 +41,7 @@ public abstract class Organization {
 //            public Organization createOrganization() {
 //                return new DoctorOrganization();
 //            }
-        }, HumanResourse("Human Resourse"){
+        }, HumanResource("Human Resource"){
 //            public Organization createOrganization() {
 //                return new DoctorOrganization();
 //            }

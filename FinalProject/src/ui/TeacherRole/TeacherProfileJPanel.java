@@ -71,7 +71,7 @@ public class TeacherProfileJPanel extends javax.swing.JPanel {
             }
         });
         add(btnRequestLabEquipment);
-        btnRequestLabEquipment.setBounds(260, 250, 262, 40);
+        btnRequestLabEquipment.setBounds(270, 250, 262, 40);
 
         lblTitle.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(153, 204, 0));

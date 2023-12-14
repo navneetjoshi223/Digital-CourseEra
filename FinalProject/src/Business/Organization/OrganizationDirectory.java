@@ -25,7 +25,7 @@ public class OrganizationDirectory {
     
     public Organization createOrganization(Type type){
         Organization organization = null;
-        if (type.getValue().equals(Type.CurricumDev.getValue())){
+        if (type.getValue().equals(Type.CurriculumDev.getValue())){
             organization = new CurriculumDevelopmentOrganization();
             organizationList.add(organization);
         }
@@ -33,7 +33,7 @@ public class OrganizationDirectory {
             organization = new AcademicAdminOrganization();
             organizationList.add(organization);
         }
-         else if (type.getValue().equals(Type.HumanResourse.getValue())){
+         else if (type.getValue().equals(Type.HumanResource.getValue())){
             organization = new HumanResourceOrganization();
             organizationList.add(organization);
         }
