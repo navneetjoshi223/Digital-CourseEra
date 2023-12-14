@@ -35,12 +35,12 @@ public class PlatformDataJPanel extends javax.swing.JPanel {
         progressBar.setBackground(Color.LIGHT_GRAY);
 //        lblEmp.setText(business.getOrganizationDirectory().getOrganizationList().);
 // Assuming these are JLabels or JTextFields
-       // Assuming these are JLabels or JTextFields
-jTextField1.setText(business.getBudget() != null ? String.valueOf(business.getBudget()) : "");
-int teacherDirectorySize = business.getTeacherDirectory().lengthOf();
-txtTeachersRecruited.setText(teacherDirectorySize > 0 ? String.valueOf(teacherDirectorySize) : "");
-txtOverallFundsForResources.setText(String.valueOf(business.getExpenseDirectory().getSumOfInventoryAmounts()));
-txtBudgetTeachers.setText(String.valueOf(business.getExpenseDirectory().getSumOfResourceAmounts()));
+        // Assuming these are JLabels or JTextFields
+        jTextField1.setText(business.getBudget() != null ? String.valueOf(business.getBudget()) : "");
+        int teacherDirectorySize = business.getTeacherDirectory().lengthOf();
+        txtTeachersRecruited.setText(teacherDirectorySize > 0 ? String.valueOf(teacherDirectorySize) : "");
+        txtOverallFundsForResources.setText(String.valueOf(business.getExpenseDirectory().getSumOfInventoryAmounts()));
+        txtBudgetTeachers.setText(String.valueOf(business.getExpenseDirectory().getSumOfResourceAmounts()));
     }
 
     /**
