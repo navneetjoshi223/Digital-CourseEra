@@ -20,6 +20,12 @@ public abstract class WorkRequest {
     private Date requestDate;
     private Date resolveDate;
     
+    
+    private String field1;
+    private String field2;
+    private String field3;
+    private String field4;
+    
     public WorkRequest(){
         requestDate = new Date();
     }
@@ -75,7 +81,41 @@ public abstract class WorkRequest {
     @Override
     
     public String toString(){
-        return this.message;
+        return this.sender.getUsername();
     }
+
+    public String getField1() {
+        return field1;
+    }
+
+    public void setField1(String field1) {
+        this.field1 = field1;
+    }
+
+    public String getField2() {
+        return field2;
+    }
+
+    public void setField2(String field2) {
+        this.field2 = field2;
+    }
+
+    public String getField3() {
+        return field3;
+    }
+
+    public void setField3(String field3) {
+        this.field3 = field3;
+    }
+
+    public String getField4() {
+        return field4;
+    }
+
+    public void setField4(String field4) {
+        this.field4 = field4;
+    }
+    
+    
             
 }

@@ -4,9 +4,13 @@
  */
 package UserInterface.HR;
 
+import Business.Business;
+import Business.Organization.FinanceOrganization;
+import Business.Organization.Organization;
 import Business.Teacher.Teacher;
 import Business.Teacher.TeacherDirectory;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.FinanceWorkRequest;
 import java.awt.CardLayout;
 import java.io.File;
 import java.io.IOException;
@@ -30,12 +34,16 @@ public class TeacherFormJPanel extends javax.swing.JPanel {
     TeacherDirectory teach;
     private Teacher teacher;
      JPanel mainWorkArea;
+     Business business;
+     UserAccount useraccount;
    
 
-    TeacherFormJPanel(JPanel mainWorkArea,TeacherDirectory teach) {
+    TeacherFormJPanel(JPanel mainWorkArea,TeacherDirectory teach,Business business,UserAccount useraccount) {
        initComponents(); 
          this.teach =  teach;
          this.mainWorkArea= mainWorkArea;
+         this.business=business;
+         this.useraccount=useraccount;
     }
 
     /**
@@ -181,15 +189,37 @@ public class TeacherFormJPanel extends javax.swing.JPanel {
         String qualifications = txtqualify.getText();
         String subjects = txtsub.getText();
         
-        Teacher ts = teach.addNewTeacher();
-        ts.setName(name);
-        ts.setQualifications(qualifications);
-        ts.setSubject(subjects);
 
+FinanceWorkRequest request = new FinanceWorkRequest();
+//        request.setMessage(message);
         
-              
+       request.setField1(name);
+       request.setField2(subjects);
+       request.setField3(qualifications);
+       request.setField4("-");
+       request.setSender(useraccount);
+//       request.setStatus("Sent");
         
-        JOptionPane.showMessageDialog(this, "Your Information is successfully Saved.");
+        Organization org = null;
+        for (Organization organization : business.getOrganizationDirectory().getOrganizationList()){
+            if (organization instanceof FinanceOrganization){
+                org = organization;
+                break;
+            }
+        }
+
+        if (org != null){
+            org.getWorkQueue().getWorkRequestList().add(request);
+            useraccount.getWorkQueue().getWorkRequestList().add(request);
+        }
+        
+//        populateRequestTable();
+        JOptionPane.showMessageDialog(null, "Your Information is successfully Saved.");
+        txtname.setText("");
+        txtqualify.setText("");
+        txtsub.setText("");
+
+
        
     }//GEN-LAST:event_txtSubmitActionPerformed
 

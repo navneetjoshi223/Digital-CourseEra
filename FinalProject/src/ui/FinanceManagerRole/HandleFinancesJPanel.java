@@ -8,7 +8,11 @@ import Business.Business;
 import Business.Organization.AcademicAdminOrganization;
 import Business.Organization.FinanceOrganization;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.FinanceWorkRequest;
+import Business.WorkQueue.WorkRequest;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -28,10 +32,34 @@ public class HandleFinancesJPanel extends javax.swing.JPanel {
    
 
     public HandleFinancesJPanel(JPanel mainWorkArea, UserAccount userAccount, FinanceOrganization financeOrganization, Business business) {
-            this.workArea=mainWorkArea;
+           initComponents();
+        
+        this.workArea=mainWorkArea;
             this.userAccount=userAccount;
             this.financeOrganization=financeOrganization;
             this.business=business;
+            
+            System.out.println("Inside HandleFinancesJPanel constructor");
+            populateTable();
+    }
+    
+    
+      public void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) tblFinancingRequests.getModel();
+
+        model.setRowCount(0);
+       
+        
+        for (WorkRequest request : financeOrganization.getWorkQueue().getWorkRequestList()) {
+            Object[] row = new Object[3];
+            row[0] = request;
+            row[1] = request.getField1();
+            row[2] = request.getField4();
+//            row[3] = request;
+//            row[3] = request.getStatus();
+
+            model.addRow(row);
+        }
     }
 
   
@@ -51,9 +79,11 @@ public class HandleFinancesJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblFinancingRequests = new javax.swing.JTable();
         lblFinancingRequests = new javax.swing.JLabel();
-        btnApproveBudget = new javax.swing.JButton();
         btnApproveBudget1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        txtTotalBudget1 = new javax.swing.JTextField();
+        txtSalary = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 204, 255));
         setLayout(null);
@@ -72,7 +102,7 @@ public class HandleFinancesJPanel extends javax.swing.JPanel {
 
         txtTotalBudget.setEnabled(false);
         add(txtTotalBudget);
-        txtTotalBudget.setBounds(327, 114, 200, 23);
+        txtTotalBudget.setBounds(340, 120, 200, 23);
 
         tblFinancingRequests.setBackground(new java.awt.Color(117, 205, 255));
         tblFinancingRequests.setForeground(new java.awt.Color(0, 102, 204));
@@ -84,7 +114,7 @@ public class HandleFinancesJPanel extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "Request", "Amount demanded", "Reason"
+                "Sender", "Teacher Name", "Salary"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -111,37 +141,86 @@ public class HandleFinancesJPanel extends javax.swing.JPanel {
         add(lblFinancingRequests);
         lblFinancingRequests.setBounds(107, 184, 215, 17);
 
-        btnApproveBudget.setBackground(new java.awt.Color(102, 51, 255));
-        btnApproveBudget.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-        btnApproveBudget.setForeground(new java.awt.Color(255, 255, 255));
-        btnApproveBudget.setText("Deny Budget");
-        btnApproveBudget.setToolTipText("");
-        add(btnApproveBudget);
-        btnApproveBudget.setBounds(581, 505, 123, 40);
-
         btnApproveBudget1.setBackground(new java.awt.Color(102, 51, 255));
         btnApproveBudget1.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnApproveBudget1.setForeground(new java.awt.Color(255, 255, 255));
         btnApproveBudget1.setText("Approve Budget");
         btnApproveBudget1.setToolTipText("");
+        btnApproveBudget1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnApproveBudget1ActionPerformed(evt);
+            }
+        });
         add(btnApproveBudget1);
-        btnApproveBudget1.setBounds(406, 505, 146, 40);
+        btnApproveBudget1.setBounds(570, 500, 146, 40);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fin.jpg"))); // NOI18N
         add(jLabel1);
-        jLabel1.setBounds(-390, 0, 1850, 600);
+        jLabel1.setBounds(-390, 40, 1850, 580);
+
+        txtTotalBudget1.setEnabled(false);
+        add(txtTotalBudget1);
+        txtTotalBudget1.setBounds(340, 120, 200, 23);
+        add(txtSalary);
+        txtSalary.setBounds(820, 510, 64, 23);
+
+        jButton3.setText("Refresh");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        add(jButton3);
+        jButton3.setBounds(840, 150, 78, 23);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnApproveBudget1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveBudget1ActionPerformed
+    int selectedRow = tblFinancingRequests.getSelectedRow();
+
+    if (selectedRow >= 0) {
+        // Assuming row[4] is the teacher's name
+        String amount = txtSalary.getText(); 
+
+        // Check if the salary has been added
+        if ("-".equals(tblFinancingRequests.getValueAt(selectedRow, 2))) {
+            FinanceWorkRequest request = (FinanceWorkRequest) tblFinancingRequests.getValueAt(selectedRow, 0);
+
+            // Update the salary or perform necessary actions with the amount
+            request.setField4(amount);
+            
+            // Set the result to "Approved" as per your logic
+//            request.setResult("Approved");
+
+            JOptionPane.showMessageDialog(null, "Salary added and request approved.", "Information", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Salary already added!", "Information", JOptionPane.INFORMATION_MESSAGE);
+        }
+    } else {
+        JOptionPane.showMessageDialog(null, "Please select a request row!.");
+        return;
+    }
+
+    populateTable();
+    }//GEN-LAST:event_btnApproveBudget1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+
+        populateTable();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnApproveBudget;
     private javax.swing.JButton btnApproveBudget1;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblFinancingRequests;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblTotalBudget;
     private javax.swing.JTable tblFinancingRequests;
+    private javax.swing.JTextField txtSalary;
     private javax.swing.JTextField txtTotalBudget;
+    private javax.swing.JTextField txtTotalBudget1;
     // End of variables declaration//GEN-END:variables
 }

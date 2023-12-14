@@ -16,7 +16,7 @@ public class FinanceManager extends Role {
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Business business) {
-      this.type = RoleType.AcademicDean;
+      this.type = RoleType.Finance;
         return new HandleFinancesJPanel(userProcessContainer, account, (FinanceOrganization) organization, business);
     }
 }

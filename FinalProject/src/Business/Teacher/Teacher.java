@@ -12,6 +12,7 @@ public class Teacher {
     private String name;
     private String qualifications;
     private String subject;
+    private String salary;
 
     public String getName() {
         return name;
@@ -31,6 +32,14 @@ public class Teacher {
 
     public String getSubject() {
         return subject;
+    }
+
+    public String getSalary() {
+        return salary;
+    }
+
+    public void setSalary(String salary) {
+        this.salary = salary;
     }
 
     public void setSubject(String subject) {

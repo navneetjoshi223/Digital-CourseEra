@@ -9,6 +9,8 @@ import Business.Organization.HumanResourceOrganization;
 import Business.Teacher.Teacher;
 import Business.Teacher.TeacherDirectory;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.FinanceWorkRequest;
+import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -24,50 +26,69 @@ public class HRJPanel extends javax.swing.JPanel {
     /**
      * Creates new form HR
      */
-
     JPanel mainWorkArea;
-   
+
     UserAccount useraccount;
     HumanResourceOrganization humanResourceOrganization;
     Business business;
-    
-     TeacherDirectory teach;
+
+    TeacherDirectory teach;
     private Teacher teacher;
-    
-   
 
     public HRJPanel(JPanel mainWorkArea, UserAccount account, HumanResourceOrganization humanResourceOrganization, Business business) {
         initComponents();
         this.mainWorkArea = mainWorkArea;
         this.teach = business.getTeacherDirectory();
-        this.humanResourceOrganization=humanResourceOrganization;
-        populateTable();
+        this.humanResourceOrganization = humanResourceOrganization;
+        this.useraccount = account;
+        this.business = business;
+//        populateTable();
+        populateRequestTable();
+
     }
 
-   
+    public void populateRequestTable() {
 
-    
-    
-    private void populateTable() {
-       DefaultTableModel model = (DefaultTableModel) tblTeacher.getModel();
-       model.setRowCount(0);
-       
-       for (Teacher ts :teach.getTeach()){
-        
-        Object[] row = new Object[3];
-        row[0] = ts;
-        row[1] = ts.getQualifications();
-        row[2] = ts.getSubject();
-        
-        model.addRow(row);
-        
-        
-    
+        DefaultTableModel model = (DefaultTableModel) tblTeacher.getModel();
+
+        model.setRowCount(0);
+        for (WorkRequest request : useraccount.getWorkQueue().getWorkRequestList()) {
+            Object[] row = new Object[5];
+            row[0] = request.getField1();
+            row[1] = request.getField2();
+            row[2] = request.getField3();
+            row[3] = request.getField4();
+
+            boolean teacherExists = teach.searchTeacherByName(request.getField1());
+
+            // Set the value in the table based on the result
+            if (teacherExists) {
+                row[4] = "Recruited";
+            } else if (row[3].equals("-")) {
+                row[4] = "Waiting for HR";
+            } else {
+                row[4] = "Waiting for Recruitment";
+            }
+            model.addRow(row);
+        }
     }
-       
 
-       
-}
+//    private void populateTable() {
+//        DefaultTableModel model = (DefaultTableModel) tblTeacher.getModel();
+//        model.setRowCount(0);
+//
+//        for (Teacher ts : teach.getTeach()) {
+//
+//            Object[] row = new Object[3];
+//            row[0] = ts;
+//            row[1] = ts.getQualifications();
+//            row[2] = ts.getSubject();
+//
+//            model.addRow(row);
+//
+//        }
+//
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -95,11 +116,11 @@ public class HRJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Teacher Name", "Teacher Qualifications", "Subject"
+                "Teacher Name", "Teacher Qualifications", "Subject", "Salary", "Recruitment Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -114,7 +135,7 @@ public class HRJPanel extends javax.swing.JPanel {
         }
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(80, 170, 421, 210);
+        jScrollPane1.setBounds(80, 170, 570, 210);
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -130,11 +151,12 @@ public class HRJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton1);
-        jButton1.setBounds(520, 260, 74, 23);
+        jButton1.setBounds(560, 410, 74, 23);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gif.gif"))); // NOI18N
+        jLabel2.setText("Request HR for Salary");
         add(jLabel2);
-        jLabel2.setBounds(0, 240, 710, 660);
+        jLabel2.setBounds(0, 400, 520, 500);
 
         btnback.setText("Back");
         btnback.addActionListener(new java.awt.event.ActionListener() {
@@ -161,7 +183,7 @@ public class HRJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton3);
-        jButton3.setBounds(280, 140, 78, 23);
+        jButton3.setBounds(560, 140, 78, 23);
 
         jButton2.setText("Logout");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -174,41 +196,67 @@ public class HRJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        JOptionPane.showMessageDialog(null, "Teacher Recrited Successfully.", "Information", JOptionPane.INFORMATION_MESSAGE);
-        
-  
-        
-        
+        int selectedRow = tblTeacher.getSelectedRow();
+
+        if (selectedRow >= 0) {
+            // Assuming row[4] is the teacher's name
+            String teacherName = String.valueOf(tblTeacher.getValueAt(selectedRow, 0));
+
+            // Check if the teacher has been recruited
+            boolean teacherExists = teach.searchTeacherByName(teacherName);
+
+            if (teacherExists) {
+                JOptionPane.showMessageDialog(null, "Teacher already recruited.", "Information", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                if (!"-".equals(tblTeacher.getValueAt(selectedRow, 3))) {
+                    Teacher newTeacher = teach.addNewTeacher();
+
+                    newTeacher.setName(String.valueOf(tblTeacher.getValueAt(selectedRow, 0)));
+                    newTeacher.setQualifications(String.valueOf(tblTeacher.getValueAt(selectedRow, 1)));
+                    newTeacher.setSubject(String.valueOf(tblTeacher.getValueAt(selectedRow, 2)));
+                    newTeacher.setSalary(String.valueOf(tblTeacher.getValueAt(selectedRow, 3)));
+
+                    JOptionPane.showMessageDialog(null, "Teacher Recruited Successfully.Request Admin to create credentials", "Information", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please wait for the HR to add the salary.", "Information", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a request row!.");
+            return;
+        }
+
+        populateRequestTable();
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTeacherActionPerformed
         // TODO add your handling code here:
-        TeacherFormJPanel tj = new TeacherFormJPanel(mainWorkArea,teach);
-                    mainWorkArea.add("TeacherFormJPanel", tj);
-                    CardLayout layout = (CardLayout) mainWorkArea.getLayout();
-                    layout.next(mainWorkArea);
+        TeacherFormJPanel tj = new TeacherFormJPanel(mainWorkArea, teach, business, useraccount);
+        mainWorkArea.add("TeacherFormJPanel", tj);
+        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+        layout.next(mainWorkArea);
 
-        
-        
+
     }//GEN-LAST:event_btnTeacherActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        
-        populateTable();
+
+        populateRequestTable();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
         // TODO add your handling code here:
         mainWorkArea.remove(this);
-        CardLayout layout=(CardLayout) mainWorkArea.getLayout();
+        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
         layout.previous(mainWorkArea);
     }//GEN-LAST:event_btnbackActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
+
         mainWorkArea.remove(this);
         CardLayout layout = (CardLayout) mainWorkArea.getLayout();
         layout.previous(mainWorkArea);

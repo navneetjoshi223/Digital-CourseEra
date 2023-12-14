@@ -34,6 +34,15 @@ public class TeacherDirectory {
         return newTeacher;
     }
   
+     
+      public boolean searchTeacherByName(String name) {
+        for (Teacher teacher : teach) {
+            if (teacher.getName().equals(name)) {
+                return true; // Teacher found
+            }
+        }
+        return false; // Teacher not found
+    }
     
 
 }
