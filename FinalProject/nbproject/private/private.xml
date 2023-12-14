@@ -3,29 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/ashwinnair/Documents/Code%20Review/studiess/FinalProject/src/Business/Role/SubjectSpecialist.java</file>
-            <file>file:/Users/ashwinnair/Documents/Code%20Review/studiess/FinalProject/src/Business/Organization/AcademicAdminOrganization.java</file>
-            <file>file:/Users/ashwinnair/Documents/Code%20Review/studiess/FinalProject/src/Business/Business.java</file>
-            <file>file:/Users/ashwinnair/Documents/Code%20Review/studiess/FinalProject/src/Business/Role/AcademicDean.java</file>
-            <file>file:/Users/ashwinnair/Documents/Code%20Review/studiess/FinalProject/src/Business/Role/TeacherRole.java</file>
-            <file>file:/Users/ashwinnair/Documents/Code%20Review/studiess/FinalProject/src/Business/Organization/StaffOrganization.java</file>
-            <file>file:/Users/ashwinnair/Documents/Code%20Review/studiess/FinalProject/src/Business/Role/Role.java</file>
-            <file>file:/Users/ashwinnair/Documents/Code%20Review/studiess/FinalProject/src/ui/AdministrativeRole/EnterpriseSelectJPanel.java</file>
-            <file>file:/Users/ashwinnair/Documents/Code%20Review/studiess/FinalProject/src/ui/AcademicAdministration/AcademicAdminmistratorJPanel.java</file>
-            <file>file:/Users/ashwinnair/Documents/Code%20Review/studiess/FinalProject/src/Business/Role/HRRole.java</file>
-            <file>file:/Users/ashwinnair/Documents/Code%20Review/studiess/FinalProject/src/ui/AdministrativeRole/AdminWorkAreaJPanel.java</file>
-            <file>file:/Users/ashwinnair/Documents/Code%20Review/studiess/FinalProject/src/UserInterface/HR/HRJPanel.java</file>
-            <file>file:/Users/ashwinnair/Documents/Code%20Review/studiess/FinalProject/src/UserInterface/Resources/ITInfrastructureJPanel.java</file>
-            <file>file:/Users/ashwinnair/Documents/Code%20Review/studiess/FinalProject/src/ui/LoginScreen.java</file>
-            <file>file:/Users/ashwinnair/Documents/Code%20Review/studiess/FinalProject/src/Business/Organization/Organization.java</file>
-            <file>file:/Users/ashwinnair/Documents/Code%20Review/studiess/FinalProject/src/Business/Organization/InfrastructureOrganization.java</file>
-            <file>file:/Users/ashwinnair/Documents/Code%20Review/studiess/FinalProject/src/ui/FinanceManagerRole/HandleFinancesJPanel.java</file>
-            <file>file:/Users/ashwinnair/Documents/Code%20Review/studiess/FinalProject/src/ui/TeacherRole/TeacherProfileJPanel.java</file>
-            <file>file:/Users/ashwinnair/Documents/Code%20Review/studiess/FinalProject/src/Business/ConfigureBusiness.java</file>
-            <file>file:/Users/ashwinnair/Documents/Code%20Review/studiess/FinalProject/src/Business/Organization/HumanResourceOrganization.java</file>
-            <file>file:/Users/ashwinnair/Documents/Code%20Review/studiess/FinalProject/src/Business/Role/ITCoordinatorRole.java</file>
-            <file>file:/Users/ashwinnair/Documents/Code%20Review/studiess/FinalProject/src/Business/Role/FinanceManager.java</file>
-            <file>file:/Users/ashwinnair/Documents/Code%20Review/studiess/FinalProject/src/ui/MainScreen.java</file>
+            <file>file:/Users/macmuffin/AED/studiess/FinalProject/src/ui/FinanceManagerRole/HandleFinancesJPanel.java</file>
+            <file>file:/Users/macmuffin/AED/studiess/FinalProject/src/Business/Teacher/Teacher.java</file>
+            <file>file:/Users/macmuffin/AED/studiess/FinalProject/src/Business/Role/FinanceManager.java</file>
+            <file>file:/Users/macmuffin/AED/studiess/FinalProject/src/Business/Teacher/TeacherDirectory.java</file>
+            <file>file:/Users/macmuffin/AED/studiess/FinalProject/src/ui/AcademicAdministration/CurriculumDevelopmentJPanel.java</file>
+            <file>file:/Users/macmuffin/AED/studiess/FinalProject/src/ui/AcademicAdministration/ViewRecruitedTeachersJPanel.java</file>
+            <file>file:/Users/macmuffin/AED/studiess/FinalProject/src/ui/AcademicAdministration/AcademicAdminmistratorJPanel.java</file>
+            <file>file:/Users/macmuffin/AED/studiess/FinalProject/src/ui/TeacherRole/TeacherProfileJPanel.java</file>
         </group>
     </open-files>
 </project-private>
