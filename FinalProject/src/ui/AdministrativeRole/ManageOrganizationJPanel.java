@@ -137,7 +137,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
         btnBack.setBounds(42, 38, 80, 23);
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
-        lblTitle.setForeground(new java.awt.Color(102, 102, 255));
+        lblTitle.setForeground(new java.awt.Color(102, 255, 204));
         lblTitle.setText("Manage Organizations");
         add(lblTitle);
         lblTitle.setBounds(300, 30, 202, 22);
@@ -148,9 +148,9 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
         lblOrganizationList.setBounds(170, 82, 200, 40);
 
         lblOrganizationAdd.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblOrganizationAdd.setText("Add Organization:");
+        lblOrganizationAdd.setText("Add Organization");
         add(lblOrganizationAdd);
-        lblOrganizationAdd.setBounds(172, 233, 127, 17);
+        lblOrganizationAdd.setBounds(172, 233, 122, 17);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/org2.jpg"))); // NOI18N
         add(jLabel1);
