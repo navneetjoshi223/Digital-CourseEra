@@ -103,10 +103,8 @@ public class HRJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        btnback = new javax.swing.JButton();
         btnTeacher = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(51, 51, 255));
         setLayout(null);
@@ -137,13 +135,17 @@ public class HRJPanel extends javax.swing.JPanel {
         add(jScrollPane1);
         jScrollPane1.setBounds(80, 170, 570, 210);
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 204, 204));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Recruitment Panel");
         add(jLabel1);
         jLabel1.setBounds(252, 24, 323, 23);
 
+        jButton1.setBackground(new java.awt.Color(0, 204, 204));
         jButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 51, 204));
         jButton1.setText("Recruit");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,22 +153,15 @@ public class HRJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton1);
-        jButton1.setBounds(560, 410, 74, 23);
+        jButton1.setBounds(560, 400, 90, 30);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gif.gif"))); // NOI18N
         jLabel2.setText("Request HR for Salary");
         add(jLabel2);
-        jLabel2.setBounds(0, 400, 520, 500);
+        jLabel2.setBounds(80, 340, 520, 500);
 
-        btnback.setText("Back");
-        btnback.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnbackActionPerformed(evt);
-            }
-        });
-        add(btnback);
-        btnback.setBounds(40, 90, 78, 23);
-
+        btnTeacher.setBackground(new java.awt.Color(0, 204, 204));
+        btnTeacher.setForeground(new java.awt.Color(0, 51, 204));
         btnTeacher.setText("Add Teacher");
         btnTeacher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,8 +169,10 @@ public class HRJPanel extends javax.swing.JPanel {
             }
         });
         add(btnTeacher);
-        btnTeacher.setBounds(90, 140, 104, 23);
+        btnTeacher.setBounds(80, 130, 120, 30);
 
+        jButton3.setBackground(new java.awt.Color(0, 204, 204));
+        jButton3.setForeground(new java.awt.Color(0, 51, 204));
         jButton3.setText("Refresh");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,16 +180,7 @@ public class HRJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton3);
-        jButton3.setBounds(560, 140, 78, 23);
-
-        jButton2.setText("Logout");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        add(jButton2);
-        jButton2.setBounds(880, 30, 72, 23);
+        jButton3.setBounds(570, 130, 78, 30);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -247,27 +235,10 @@ public class HRJPanel extends javax.swing.JPanel {
         populateRequestTable();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
-        // TODO add your handling code here:
-        mainWorkArea.remove(this);
-        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
-        layout.previous(mainWorkArea);
-    }//GEN-LAST:event_btnbackActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-
-        mainWorkArea.remove(this);
-        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
-        layout.previous(mainWorkArea);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTeacher;
-    private javax.swing.JButton btnback;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

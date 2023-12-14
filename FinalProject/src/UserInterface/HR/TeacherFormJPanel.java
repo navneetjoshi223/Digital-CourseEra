@@ -79,7 +79,7 @@ public class TeacherFormJPanel extends javax.swing.JPanel {
             }
         });
         add(txtname);
-        txtname.setBounds(280, 60, 142, 23);
+        txtname.setBounds(280, 60, 170, 23);
 
         txtSubmit.setBackground(new java.awt.Color(0, 255, 204));
         txtSubmit.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
@@ -93,14 +93,15 @@ public class TeacherFormJPanel extends javax.swing.JPanel {
         txtSubmit.setBounds(250, 240, 160, 29);
 
         btnUpload.setBackground(new java.awt.Color(0, 102, 102));
-        btnUpload.setText("Uplaod Resume");
+        btnUpload.setForeground(new java.awt.Color(255, 255, 255));
+        btnUpload.setText("Upload Resume");
         btnUpload.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUploadActionPerformed(evt);
             }
         });
         add(btnUpload);
-        btnUpload.setBounds(270, 210, 124, 23);
+        btnUpload.setBounds(250, 210, 160, 23);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/form.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -116,13 +117,13 @@ public class TeacherFormJPanel extends javax.swing.JPanel {
         add(jButton1);
         jButton1.setBounds(10, 10, 78, 23);
 
-        jLabel3.setText("Qualifications");
+        jLabel3.setText("Qualifications:");
         add(jLabel3);
         jLabel3.setBounds(180, 110, 100, 17);
 
-        jLabel4.setText("Subject");
+        jLabel4.setText("Subject:");
         add(jLabel4);
-        jLabel4.setBounds(190, 160, 80, 17);
+        jLabel4.setBounds(210, 160, 80, 17);
 
         txtqualify.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,7 +131,7 @@ public class TeacherFormJPanel extends javax.swing.JPanel {
             }
         });
         add(txtqualify);
-        txtqualify.setBounds(280, 110, 140, 23);
+        txtqualify.setBounds(280, 110, 170, 23);
 
         txtsub.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,7 +139,7 @@ public class TeacherFormJPanel extends javax.swing.JPanel {
             }
         });
         add(txtsub);
-        txtsub.setBounds(274, 160, 150, 23);
+        txtsub.setBounds(280, 160, 170, 23);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnameActionPerformed
