@@ -57,8 +57,8 @@ public class AcademicAdminmistratorJPanel extends javax.swing.JPanel {
         for (WorkRequest request : aaOrganization.getWorkQueue().getWorkRequestList()) {
             Object[] row = new Object[4];
             row[0] = request;
-            row[1] = request.getSender().getEmployee().getName();
-            row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+            row[1] = request.getField1(); //.getSender().getEmployee().getName();
+            row[2] = request.getField2();
             row[3] = request.getStatus();
 
             model.addRow(row);
@@ -77,47 +77,53 @@ public class AcademicAdminmistratorJPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblWorkRequest = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnApprove = new javax.swing.JButton();
+        btnViewRecruitedTeachers = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(153, 153, 255));
 
         tblWorkRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Message", "Sender", "Approval Status"
+                "Sender", "Subject", "Description", "Approval status"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblWorkRequest);
+        if (tblWorkRequest.getColumnModel().getColumnCount() > 0) {
+            tblWorkRequest.getColumnModel().getColumn(0).setResizable(false);
+            tblWorkRequest.getColumnModel().getColumn(1).setResizable(false);
+            tblWorkRequest.getColumnModel().getColumn(2).setResizable(false);
+            tblWorkRequest.getColumnModel().getColumn(3).setResizable(false);
+        }
 
-        jButton1.setBackground(new java.awt.Color(0, 102, 102));
-        jButton1.setForeground(new java.awt.Color(255, 153, 153));
-        jButton1.setText("Process");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnApprove.setBackground(new java.awt.Color(0, 102, 102));
+        btnApprove.setForeground(new java.awt.Color(255, 153, 153));
+        btnApprove.setText("Approve");
+        btnApprove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnApproveActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Back");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnViewRecruitedTeachers.setBackground(new java.awt.Color(0, 102, 102));
+        btnViewRecruitedTeachers.setForeground(new java.awt.Color(255, 153, 153));
+        btnViewRecruitedTeachers.setText("View Recruited Teachers");
+        btnViewRecruitedTeachers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setBackground(new java.awt.Color(0, 204, 204));
-        jButton4.setFont(new java.awt.Font("Helvetica Neue", 1, 12)); // NOI18N
-        jButton4.setText("Assign to Me");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnViewRecruitedTeachersActionPerformed(evt);
             }
         });
 
@@ -126,85 +132,49 @@ public class AcademicAdminmistratorJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(jButton2)
-                .addGap(59, 59, 59)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(185, 185, 185)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnApprove, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnViewRecruitedTeachers))
                 .addContainerGap(301, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
-                .addGap(319, 319, 319))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jButton2)
-                        .addGap(397, 397, 397))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(71, 71, 71)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton4))
-                .addContainerGap(182, Short.MAX_VALUE))
+                .addComponent(btnApprove, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnViewRecruitedTeachers, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(111, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
          int selectedRow = tblWorkRequest.getSelectedRow();
 
         if (selectedRow >= 0) {
             CurriculumWorkRequest request = (CurriculumWorkRequest ) tblWorkRequest.getValueAt(selectedRow, 0);
 
             request.setStatus("Approved");
-            request.setResult("Approved");
-
 
         } else {
-            JOptionPane.showMessageDialog(null, "Please select a request message to process.");
+            JOptionPane.showMessageDialog(null, "Please select a course to approve.");
             return;
         }
         populateTable();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnApproveActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnViewRecruitedTeachersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewRecruitedTeachersActionPerformed
         // TODO add your handling code here:
-        userProcessContainer.remove(this);
-        CardLayout layout=(CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        int selectedRow = tblWorkRequest.getSelectedRow();
-
-        if (selectedRow >= 0) {
-            CurriculumWorkRequest request = (CurriculumWorkRequest) tblWorkRequest.getValueAt(selectedRow, 0);
-
-            request.setStatus("Processing");
-
-            ProcessWorkRequest1JPanel processWorkRequestJPanel = new ProcessWorkRequest1JPanel(userProcessContainer, request);
-            userProcessContainer.add("processWorkRequestJPanel", processWorkRequestJPanel);
-            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-            layout.next(userProcessContainer);
-
-        } else {
-            JOptionPane.showMessageDialog(null, "Please select a request message to process.");
-            return;
-        }
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnViewRecruitedTeachersActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnApprove;
+    private javax.swing.JButton btnViewRecruitedTeachers;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblWorkRequest;
     // End of variables declaration//GEN-END:variables
