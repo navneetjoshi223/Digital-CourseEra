@@ -5,6 +5,7 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.InfrastructureOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import UserInterface.Resources.BrowseResourceJPanel;
 import UserInterface.Resources.ITInfrastructureJPanel;
 import javax.swing.JPanel;
 
@@ -17,6 +18,6 @@ public class ITCoordinatorRole extends Role {
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Business business) {
         this.type = RoleType.ITCoordinator;
-        return new ITInfrastructureJPanel(userProcessContainer, account, (InfrastructureOrganization) organization, business);
+        return new BrowseResourceJPanel(userProcessContainer, account, (InfrastructureOrganization) organization, business);
     }
 }
