@@ -8,6 +8,7 @@ import Business.Organization.Organization;
 import Business.Organization.Organization.Type;
 import Business.Organization.OrganizationDirectory;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -160,7 +161,20 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
 
         Type type = (Type) cmbOrganizations.getSelectedItem();
-        directory.createOrganization(type);
+        
+        boolean isOrganizationAlreadyPresent = false;
+        for (Organization org : directory.getOrganizationList()) {
+            if(org.getName().equalsIgnoreCase(type.getValue()) ) {
+                isOrganizationAlreadyPresent = true;
+            }
+        }
+
+        if (isOrganizationAlreadyPresent) {
+            JOptionPane.showMessageDialog(null, "This organization is already added.");
+        } else {
+           directory.createOrganization(type);
+           populateTable(); 
+        }
         populateTable();
     }//GEN-LAST:event_btnAddActionPerformed
 
