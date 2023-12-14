@@ -39,4 +39,13 @@ public boolean searchResourceByName(String name) {
     }
     return false; // Resource not found
 }
+
+public Resource getResourceByName(String name) {
+    for (Resource resource : resources) {
+        if (resource.getItem().equals(name)) {
+            return resource; // Resource found
+        }
+    }
+    return null; // Resource not found
+}
 }

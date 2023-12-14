@@ -267,6 +267,7 @@ public class RequestLabEquipmentJPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "Your Information is successfully Saved.");
         txtItem.setText("");
         txtAmount.setText("");
+        populateRequestTable();
         
 
     }//GEN-LAST:event_btnSendSoftwareRequestActionPerformed
