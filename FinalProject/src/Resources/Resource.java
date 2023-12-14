@@ -37,6 +37,11 @@ public class Resource {
         this.price = price;
     }
     
+        @Override
+    public String toString(){
+    return item;
+}
+    
     
     
 }
