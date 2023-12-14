@@ -16,6 +16,7 @@ import Business.WorkQueue.InfrastructureWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import Products.Product;
 import Products.ProductDirectory;
+import Resources.Resource;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -45,9 +46,19 @@ public class RequestLabEquipmentJPanel extends javax.swing.JPanel {
         this.organization = organization;
         this.business = business;
         this.userAccount = account;
+        populateOrganizationComboBox();
 
 //        populateRequestTable();
     }
+    
+     public void populateOrganizationComboBox() {
+    jComboBox1.removeAllItems(); // Clear existing items
+    
+    // Add organization names to the combo box
+    for (Resource res : business.getResourceDirectory().getResources()) {
+        jComboBox1.addItem(res.getItem());
+    }
+     }
 
     public void populateRequestTable() {
         DefaultTableModel model = (DefaultTableModel) tbkWorkRequest.getModel();
@@ -64,6 +75,8 @@ public class RequestLabEquipmentJPanel extends javax.swing.JPanel {
             model.addRow(row);
         }
 
+        
+        
         // TODO add your handling code here:
 //        String item = txtItem.getText();
 //        String amount = txtAmount.getText();
@@ -119,8 +132,8 @@ public class RequestLabEquipmentJPanel extends javax.swing.JPanel {
         btnSendSoftwareRequest = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnBack1 = new javax.swing.JButton();
-        txtItem = new javax.swing.JTextField();
         txtAmount = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(51, 102, 0));
         setLayout(null);
@@ -167,7 +180,7 @@ public class RequestLabEquipmentJPanel extends javax.swing.JPanel {
         lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/lab.jpg"))); // NOI18N
         lblTitle.setText("Request Lab Equipment");
         add(lblTitle);
-        lblTitle.setBounds(30, 120, 790, 430);
+        lblTitle.setBounds(30, 120, 70, 60);
 
         btnBack.setBackground(new java.awt.Color(204, 255, 153));
         btnBack.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
@@ -198,7 +211,7 @@ public class RequestLabEquipmentJPanel extends javax.swing.JPanel {
             }
         });
         add(btnSendSoftwareRequest);
-        btnSendSoftwareRequest.setBounds(490, 80, 157, 23);
+        btnSendSoftwareRequest.setBounds(490, 130, 157, 23);
 
         jLabel1.setText("jLabel1");
         add(jLabel1);
@@ -214,10 +227,12 @@ public class RequestLabEquipmentJPanel extends javax.swing.JPanel {
         });
         add(btnBack1);
         btnBack1.setBounds(730, 60, 77, 23);
-        add(txtItem);
-        txtItem.setBounds(240, 80, 64, 23);
         add(txtAmount);
-        txtAmount.setBounds(370, 80, 64, 23);
+        txtAmount.setBounds(370, 130, 64, 23);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(jComboBox1);
+        jComboBox1.setBounds(240, 130, 72, 23);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -229,27 +244,19 @@ public class RequestLabEquipmentJPanel extends javax.swing.JPanel {
 
 
     private void btnSendSoftwareRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendSoftwareRequestActionPerformed
-//        CardLayout layout = (CardLayout) workArea.getLayout();
-//        workArea.add("RequestLabTestJPanel", new TeacherMessageJPanel(workArea, userAccount, business));
-//        layout.next(workArea);
+      String item = (String) jComboBox1.getSelectedItem();
+    String amountText = txtAmount.getText();
 
-
-        String item = txtItem.getText();
-        String amount = txtAmount.getText();
-
-        
+    try {
+        // Try to parse the amount as an integer
+        int amount = Integer.parseInt(amountText);
 
         InfrastructureWorkRequest request = new InfrastructureWorkRequest();
-//        request.setMessage(message);
-        
-       request.setField1(item);
-       request.setField2(amount);
-//       request.setField3(qualifications);
-//       request.setField4("-");
-       request.setSender(userAccount);
-       request.setStatus("Requested");
-//       request.setStatus("Sent");
-        
+        request.setField1(item);
+        request.setField2(amountText); // Save the amount as a string in the request
+        request.setSender(userAccount);
+        request.setStatus("Requested");
+
         Organization org = null;
         for (Organization organization : business.getOrganizationDirectory().getOrganizationList()){
             if (organization instanceof InfrastructureOrganization){
@@ -262,12 +269,14 @@ public class RequestLabEquipmentJPanel extends javax.swing.JPanel {
             org.getWorkQueue().getWorkRequestList().add(request);
             userAccount.getWorkQueue().getWorkRequestList().add(request);
         }
-        
-//        populateRequestTable();
+
         JOptionPane.showMessageDialog(null, "Your Information is successfully Saved.");
-        txtItem.setText("");
         txtAmount.setText("");
         populateRequestTable();
+    } catch (NumberFormatException e) {
+        // Handle the case where the entered amount is not a valid integer
+        JOptionPane.showMessageDialog(null, "Error: Please enter a valid integer amount.");
+    }
         
 
     }//GEN-LAST:event_btnSendSoftwareRequestActionPerformed
@@ -281,6 +290,7 @@ public class RequestLabEquipmentJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnBack1;
     private javax.swing.JButton btnSendSoftwareRequest;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblQuantityNeeded;
@@ -288,7 +298,6 @@ public class RequestLabEquipmentJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tbkWorkRequest;
     private javax.swing.JTextField txtAmount;
-    private javax.swing.JTextField txtItem;
     private javax.swing.JTextField txtQuantityNeeded;
     // End of variables declaration//GEN-END:variables
 }

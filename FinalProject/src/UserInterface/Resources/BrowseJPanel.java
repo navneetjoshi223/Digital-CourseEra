@@ -12,6 +12,7 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.FinanceWorkRequest;
 import Business.WorkQueue.InfrastructureWorkRequest;
 import Business.WorkQueue.WorkRequest;
+import Expense.Expense;
 import Resources.Resource;
 import java.util.Set;
 import javax.swing.JOptionPane;
@@ -305,6 +306,11 @@ public class BrowseJPanel extends javax.swing.JPanel {
                 res.setQuantity(res.getQuantity() + request.getField5());
                 request.setStatus("Waiting Approval");
                 itemToPurchase = true;
+                
+                Expense expense=business.getExpenseDirectory().addNewExpense();
+                    expense.setExpenseName(res.getItem());
+                    expense.setAmount(res.getQuantity()*res.getPrice());
+                    expense.setType("inventory");
             }
         }
 
