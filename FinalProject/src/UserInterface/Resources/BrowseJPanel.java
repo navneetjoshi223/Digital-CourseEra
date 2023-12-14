@@ -47,11 +47,12 @@ public class BrowseJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
 
         for (WorkRequest request : infrastructureOrganization.getWorkQueue().getWorkRequestList()) {
-            Object[] row = new Object[4];
+            Object[] row = new Object[5];
             row[0] = request;
             row[1] = request.getField1();
             row[2] = request.getField2();
             row[3] = request.getStatus();
+            row[4] = request.getId();
 //            row[3] = request;
 //            row[3] = request.getStatus();
 
@@ -94,16 +95,17 @@ public class BrowseJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         tblWorkRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Sender", "Item", "Quantity", "Status"
+                "Sender", "Item", "Quantity", "Status", "Request ID"
             }
         ));
         jScrollPane1.setViewportView(tblWorkRequest);
@@ -136,10 +138,17 @@ public class BrowseJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setText("Request Funds");
+        jButton2.setText("Shop/Request Funds");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("SHOP");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
             }
         });
 
@@ -149,28 +158,40 @@ public class BrowseJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(105, 105, 105)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel3)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jButton2)
-                            .addGap(18, 18, 18)
-                            .addComponent(jButton1))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(254, Short.MAX_VALUE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jButton2)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jButton1))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(90, 90, 90)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton3))))
+                .addContainerGap(108, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addGap(8, 8, 8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)
+                        .addGap(8, 8, 8))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton3)
+                        .addGap(12, 12, 12)))
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23)
                 .addComponent(jLabel3)
@@ -215,7 +236,6 @@ public class BrowseJPanel extends javax.swing.JPanel {
                 return;
             }
 
-            
         } else {
             JOptionPane.showMessageDialog(null, "Please select a request row!");
             return;
@@ -230,9 +250,11 @@ public class BrowseJPanel extends javax.swing.JPanel {
         if (selectedRow >= 0) {
             // Assuming tblWorkRequest.getValueAt(selectedRow, 1) returns the name of the resource
             String resourceName = (String) tblWorkRequest.getValueAt(selectedRow, 1);
-
+            
+            WorkRequest workRequest=infrastructureOrganization.getWorkQueue().getWorkRequestById((Integer) tblWorkRequest.getValueAt(selectedRow, 4));
+            workRequest.setStatus("Pending Finance Approval");
             // Assuming tblWorkRequest.getValueAt(selectedRow, 2) returns the requested quantity as Integer
-             String quantityString = (String) tblWorkRequest.getValueAt(selectedRow, 2);
+            String quantityString = (String) tblWorkRequest.getValueAt(selectedRow, 2);
 
 // Assuming the quantityString is a valid integer string, you can convert it to an int
             int requestedQuantity = Integer.parseInt(quantityString);
@@ -245,7 +267,8 @@ public class BrowseJPanel extends javax.swing.JPanel {
                 // Assuming res.getItem(), res.getPrice(), and res.getQuantity() are the correct methods
                 request.setField1(res.getItem());
                 request.setField2(String.valueOf(res.getPrice()));
-                request.setField3(String.valueOf(res.getQuantity() - requestedQuantity));
+                request.setField3(String.valueOf(requestedQuantity - res.getQuantity()));
+                request.setRequestID((Integer) tblWorkRequest.getValueAt(selectedRow, 4));
 
                 request.setSender(userAccount);
                 request.setStatus("Sent");  // Assuming you want to set the status to "Sent" initially
@@ -272,10 +295,34 @@ public class BrowseJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+
+        boolean itemToPurchase = false;
+
+        for (WorkRequest request : infrastructureOrganization.getWorkQueue().getWorkRequestList()) {
+            if ("Finance Approved".equals(request.getStatus())) {
+                Resource res = business.getResourceDirectory().getResourceByName(request.getField1());
+                res.setQuantity(res.getQuantity() + request.getField5());
+                request.setStatus("Waiting Approval");
+                itemToPurchase = true;
+            }
+        }
+
+        if (itemToPurchase) {
+            JOptionPane.showMessageDialog(null, "Item purchased successfully");
+        } else {
+            JOptionPane.showMessageDialog(null, "No Item to purchase");
+        }
+
+        populateResourceTable();
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

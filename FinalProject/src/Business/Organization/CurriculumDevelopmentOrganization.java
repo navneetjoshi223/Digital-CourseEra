@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class CurriculumDevelopmentOrganization extends Organization{
 
     public CurriculumDevelopmentOrganization() {
-        super(Organization.Type.CurricumDev.getValue());
+        super(Organization.Type.CurriculumDev.getValue());
     }
     
     @Override

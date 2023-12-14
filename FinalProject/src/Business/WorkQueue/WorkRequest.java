@@ -6,6 +6,7 @@ package Business.WorkQueue;
 
 import Business.UserAccount.UserAccount;
 import java.util.Date;
+import java.util.Random;
 
 /**
  *
@@ -19,17 +20,51 @@ public abstract class WorkRequest {
     private String status;
     private Date requestDate;
     private Date resolveDate;
+     private int id;
     
     
     private String field1;
     private String field2;
     private String field3;
     private String field4;
+    private Integer field5;
+
+    public Integer getField5() {
+        return field5;
+    }
+
+    public void setField5(Integer field5) {
+        this.field5 = field5;
+    }
+
+    public int getRequestID() {
+        return requestID;
+    }
+
+    public void setRequestID(int requestID) {
+        this.requestID = requestID;
+    }
+    private int requestID;
     
     public WorkRequest(){
         requestDate = new Date();
+        this.id = generateRandomId();
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    
+      private int generateRandomId() {
+        // Use Random class to generate a random number for the id
+        Random random = new Random();
+        return random.nextInt(1000);  // Adjust the range as needed
+    }
     public String getMessage() {
         return message;
     }

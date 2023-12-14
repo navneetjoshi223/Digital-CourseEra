@@ -21,4 +21,14 @@ public class WorkQueue {
     public ArrayList<WorkRequest> getWorkRequestList() {
         return workRequestList;
     }
+    
+    
+    public WorkRequest getWorkRequestById(int requestId) {
+        for (WorkRequest request : workRequestList) {
+            if (request.getId() == requestId) {
+                return request;
+            }
+        }
+        return null; // Return null if the request with the specified id is not found
+    }
 }

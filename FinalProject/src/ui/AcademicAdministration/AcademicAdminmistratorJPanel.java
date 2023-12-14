@@ -15,6 +15,7 @@ import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import ui.TeacherRole.ViewNotifsFromMgmtJPanel;
 
 /**
  *
@@ -79,6 +80,7 @@ public class AcademicAdminmistratorJPanel extends javax.swing.JPanel {
         tblWorkRequest = new javax.swing.JTable();
         btnApprove = new javax.swing.JButton();
         btnViewRecruitedTeachers = new javax.swing.JButton();
+        lblTitle = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(153, 153, 255));
 
@@ -127,22 +129,34 @@ public class AcademicAdminmistratorJPanel extends javax.swing.JPanel {
             }
         });
 
+        lblTitle.setBackground(new java.awt.Color(0, 0, 0));
+        lblTitle.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(102, 0, 255));
+        lblTitle.setText("Academic Administrator");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(185, 185, 185)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnApprove, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnViewRecruitedTeachers))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(185, 185, 185)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnApprove, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnViewRecruitedTeachers)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(317, 317, 317)
+                        .addComponent(lblTitle)))
                 .addContainerGap(301, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(71, 71, 71)
+                .addGap(31, 31, 31)
+                .addComponent(lblTitle)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnApprove, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -169,7 +183,10 @@ public class AcademicAdminmistratorJPanel extends javax.swing.JPanel {
 
     private void btnViewRecruitedTeachersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewRecruitedTeachersActionPerformed
         // TODO add your handling code here:
-        
+        ViewRecruitedTeachersJPanel vrtJPanel = new ViewRecruitedTeachersJPanel(userProcessContainer, business);
+        userProcessContainer.add("ViewRecruitedTeachersJPanel", vrtJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnViewRecruitedTeachersActionPerformed
 
 
@@ -177,6 +194,7 @@ public class AcademicAdminmistratorJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnApprove;
     private javax.swing.JButton btnViewRecruitedTeachers;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tblWorkRequest;
     // End of variables declaration//GEN-END:variables
 }

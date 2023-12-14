@@ -116,7 +116,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
             }
         });
         add(btnAdd);
-        btnAdd.setBounds(307, 299, 87, 23);
+        btnAdd.setBounds(370, 300, 87, 30);
 
         cmbOrganizations.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(cmbOrganizations);
