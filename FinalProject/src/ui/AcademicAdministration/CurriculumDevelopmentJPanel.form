@@ -26,33 +26,23 @@
               <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="288" max="-2" attributes="0"/>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="jScrollPane1" min="-2" pref="599" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="lblSubjectDesc" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnBack" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblSubjectName" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="lblSubjectName" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="txtSubjectName" min="-2" pref="250" max="-2" attributes="0"/>
                           <Component id="txtSubjectDesc" alignment="0" min="-2" pref="248" max="-2" attributes="0"/>
+                          <Component id="btnRequestCourseAdd" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
+                  <Component id="jScrollPane1" alignment="0" min="-2" pref="599" max="-2" attributes="0"/>
               </Group>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="190" max="-2" attributes="0"/>
-              <Component id="btnRequestCourseAdd" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -61,10 +51,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblTitle" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                  <Component id="btnBack" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="lblTitle" min="-2" pref="40" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblSubjectName" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -75,11 +62,11 @@
                   <Component id="txtSubjectDesc" alignment="3" min="-2" pref="65" max="-2" attributes="0"/>
                   <Component id="lblSubjectDesc" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-              <Component id="btnRequestCourseAdd" min="-2" pref="45" max="-2" attributes="0"/>
-              <EmptySpace pref="36" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btnRequestCourseAdd" min="-2" pref="40" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="233" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+              <EmptySpace pref="54" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -107,8 +94,8 @@
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="3" rowCount="4">
-                <Column editable="false" title="Message" type="java.lang.Object"/>
-                <Column editable="false" title="Sender" type="java.lang.Object"/>
+                <Column editable="false" title="Subject name" type="java.lang.Object"/>
+                <Column editable="false" title="Description" type="java.lang.Object"/>
                 <Column editable="false" title="Approval status" type="java.lang.Object"/>
               </Table>
             </Property>
@@ -145,14 +132,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Name of subject:"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnBack">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Back"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnRequestCourseAdd">
       <Properties>

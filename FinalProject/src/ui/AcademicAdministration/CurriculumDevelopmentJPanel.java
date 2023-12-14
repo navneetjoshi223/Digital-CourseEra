@@ -52,9 +52,9 @@ public class CurriculumDevelopmentJPanel extends javax.swing.JPanel {
         
         model.setRowCount(0);
         for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[4];
-            row[0] = request.getMessage();
-            row[1] = request.getReceiver();
+            Object[] row = new Object[3];
+            row[0] = request.getField1();
+            row[1] = request.getField2();
             row[2] = request.getStatus();
             
             model.addRow(row);
@@ -73,7 +73,6 @@ public class CurriculumDevelopmentJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblWorkRequests = new javax.swing.JTable();
         lblSubjectName = new javax.swing.JLabel();
-        btnBack = new javax.swing.JButton();
         btnRequestCourseAdd = new javax.swing.JButton();
         lblSubjectDesc = new javax.swing.JLabel();
         txtSubjectDesc = new javax.swing.JTextField();
@@ -93,7 +92,7 @@ public class CurriculumDevelopmentJPanel extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "Message", "Sender", "Approval status"
+                "Subject name", "Description", "Approval status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -113,13 +112,6 @@ public class CurriculumDevelopmentJPanel extends javax.swing.JPanel {
 
         lblSubjectName.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblSubjectName.setText("Name of subject:");
-
-        btnBack.setText("Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
 
         btnRequestCourseAdd.setBackground(new java.awt.Color(204, 255, 153));
         btnRequestCourseAdd.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
@@ -145,31 +137,22 @@ public class CurriculumDevelopmentJPanel extends javax.swing.JPanel {
                 .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 599, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblSubjectDesc)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btnBack)
-                                .addComponent(lblSubjectName)))
+                            .addComponent(lblSubjectName))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtSubjectName, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtSubjectDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(190, 190, 190)
-                .addComponent(btnRequestCourseAdd)
+                            .addComponent(txtSubjectDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnRequestCourseAdd)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 599, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBack))
+                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSubjectName)
@@ -178,20 +161,13 @@ public class CurriculumDevelopmentJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSubjectDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblSubjectDesc))
-                .addGap(26, 26, 26)
-                .addComponent(btnRequestCourseAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnRequestCourseAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
-        workArea.remove(this);
-        CardLayout layout=(CardLayout) workArea.getLayout();
-        layout.previous(workArea);
-    }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnRequestCourseAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestCourseAddActionPerformed
 
@@ -203,8 +179,10 @@ public class CurriculumDevelopmentJPanel extends javax.swing.JPanel {
         }
         CurriculumWorkRequest request = new CurriculumWorkRequest();
 //        request.setMessage(message);
-        request.setSubject(subject);
-        request.setDescription(desc);
+        //request.setSubject(subject);
+        request.setField1(subject);
+        //request.setDescription(desc);
+        request.setField2(desc);
         request.setSender(userAccount);
         request.setStatus("Sent");
         
@@ -229,7 +207,6 @@ public class CurriculumDevelopmentJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnRequestCourseAdd;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblSubjectDesc;
