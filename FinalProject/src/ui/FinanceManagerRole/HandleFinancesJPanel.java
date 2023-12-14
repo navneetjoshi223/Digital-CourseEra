@@ -97,6 +97,7 @@ public class HandleFinancesJPanel extends javax.swing.JPanel {
         tblFinancingRequests1 = new javax.swing.JTable();
         lblFinancingRequests1 = new javax.swing.JLabel();
         btnRefresh1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 255));
         setLayout(null);
@@ -235,6 +236,11 @@ public class HandleFinancesJPanel extends javax.swing.JPanel {
         });
         add(btnRefresh1);
         btnRefresh1.setBounds(610, 130, 100, 30);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fin.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        add(jLabel1);
+        jLabel1.setBounds(-50, -10, 1770, 640);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnApproveBudgetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveBudgetActionPerformed
@@ -332,6 +338,7 @@ public class HandleFinancesJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnApprove;
     private javax.swing.JButton btnApproveBudget;
     private javax.swing.JButton btnRefresh1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblFinancingRequests;
