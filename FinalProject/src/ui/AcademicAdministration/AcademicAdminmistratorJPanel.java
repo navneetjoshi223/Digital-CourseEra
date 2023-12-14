@@ -161,7 +161,7 @@ public class AcademicAdminmistratorJPanel extends javax.swing.JPanel {
             request.setStatus("Approved");
 
         } else {
-            JOptionPane.showMessageDialog(null, "Please select a course to approve.");
+            JOptionPane.showMessageDialog(null, "Please select a subject to approve.");
             return;
         }
         populateTable();
@@ -169,6 +169,7 @@ public class AcademicAdminmistratorJPanel extends javax.swing.JPanel {
 
     private void btnViewRecruitedTeachersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewRecruitedTeachersActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnViewRecruitedTeachersActionPerformed
 
 
