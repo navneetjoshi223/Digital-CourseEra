@@ -170,7 +170,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             }
         });
         add(btnCreateEmployee);
-        btnCreateEmployee.setBounds(268, 399, 175, 29);
+        btnCreateEmployee.setBounds(300, 400, 175, 29);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/emp.jpg"))); // NOI18N
         add(jLabel1);

@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class HumanResourceOrganization extends Organization{
 
     public HumanResourceOrganization() {
-        super(Organization.Type.HumanResourse.getValue());
+        super(Organization.Type.HumanResource.getValue());
     }
     
     @Override
