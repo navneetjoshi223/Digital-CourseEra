@@ -42,7 +42,6 @@ public class TeacherProfileJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnViewNotifications = new javax.swing.JButton();
         btnRequestLabEquipment = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -51,27 +50,16 @@ public class TeacherProfileJPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(51, 102, 0));
         setLayout(null);
 
-        btnViewNotifications.setBackground(new java.awt.Color(204, 255, 153));
-        btnViewNotifications.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnViewNotifications.setText("View Notifications from Management");
-        btnViewNotifications.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViewNotificationsActionPerformed(evt);
-            }
-        });
-        add(btnViewNotifications);
-        btnViewNotifications.setBounds(266, 195, 262, 40);
-
         btnRequestLabEquipment.setBackground(new java.awt.Color(204, 255, 153));
         btnRequestLabEquipment.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnRequestLabEquipment.setText("Request Lab Equipment");
+        btnRequestLabEquipment.setText("Request Equipment");
         btnRequestLabEquipment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRequestLabEquipmentActionPerformed(evt);
             }
         });
         add(btnRequestLabEquipment);
-        btnRequestLabEquipment.setBounds(270, 250, 262, 40);
+        btnRequestLabEquipment.setBounds(270, 190, 262, 40);
 
         lblTitle.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(153, 204, 0));
@@ -95,14 +83,6 @@ public class TeacherProfileJPanel extends javax.swing.JPanel {
         btnBack.setBounds(30, 50, 80, 23);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnViewNotificationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewNotificationsActionPerformed
-        // TODO add your handling code here:
-        ViewNotifsFromMgmtJPanel viewNotifsJPanel = new ViewNotifsFromMgmtJPanel(workArea);
-        workArea.add("ViewNotifsFromMgmtJPanel", viewNotifsJPanel);
-        CardLayout layout = (CardLayout) workArea.getLayout();
-        layout.next(workArea);
-    }//GEN-LAST:event_btnViewNotificationsActionPerformed
-
     private void btnRequestLabEquipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestLabEquipmentActionPerformed
         // TODO add your handling code here:
         RequestLabEquipmentJPanel requestLabEquipJPanel = new RequestLabEquipmentJPanel(workArea,userAccount,staffOrganization,business);
@@ -122,7 +102,6 @@ public class TeacherProfileJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnRequestLabEquipment;
-    private javax.swing.JButton btnViewNotifications;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables

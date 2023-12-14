@@ -29,26 +29,27 @@ public class HandleFinancesJPanel extends javax.swing.JPanel {
     UserAccount userAccount;
     FinanceOrganization financeOrganization;
     Business business;
-    
+
     public HandleFinancesJPanel(JPanel mainWorkArea, UserAccount userAccount, FinanceOrganization financeOrganization, Business business) {
         initComponents();
-        
+
         this.workArea = mainWorkArea;
         this.userAccount = userAccount;
         this.financeOrganization = financeOrganization;
         this.business = business;
-        
+
         System.out.println("Inside HandleFinancesJPanel constructor");
         populateTable();
+        txtTotalBudget.setText(String.valueOf(business.getBudget()));
     }
-    
+
     public void populateTable() {
         DefaultTableModel model = (DefaultTableModel) tblFinancingRequests.getModel();
         DefaultTableModel model1 = (DefaultTableModel) tblFinancingRequests1.getModel();
-        
+
         model.setRowCount(0);
         model1.setRowCount(0);
-        
+
         for (WorkRequest request : financeOrganization.getWorkQueue().getWorkRequestList()) {
             if (request.getField4() != null) {
                 Object[] row = new Object[3];
@@ -65,10 +66,10 @@ public class HandleFinancesJPanel extends javax.swing.JPanel {
                 row[1] = request.getField1();
                 row[2] = request.getField2();
                 row[3] = request.getField3();
-                
+
                 row[4] = request.getStatus();
                 row[5] = request.getRequestID();
-                
+
                 model1.addRow(row);
             }
         }
@@ -244,7 +245,7 @@ public class HandleFinancesJPanel extends javax.swing.JPanel {
 
     private void btnApproveBudgetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveBudgetActionPerformed
         int selectedRow = tblFinancingRequests.getSelectedRow();
-        
+
         if (selectedRow >= 0) {
             // Assuming row[4] is the teacher's name
             String amount = txtSalary.getText();
@@ -259,6 +260,9 @@ public class HandleFinancesJPanel extends javax.swing.JPanel {
                 // Set the result to "Approved" as per your logic
 //            request.setResult("Approved");
                 JOptionPane.showMessageDialog(null, "Salary added and request approved.", "Information", JOptionPane.INFORMATION_MESSAGE);
+
+                business.setBudget(business.getBudget() - Integer.parseInt(amount));
+                txtTotalBudget.setText(String.valueOf(business.getBudget()));
             } else {
                 JOptionPane.showMessageDialog(null, "Salary already added!", "Information", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -266,13 +270,13 @@ public class HandleFinancesJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a request row!.");
             return;
         }
-        
+
         populateTable();
     }//GEN-LAST:event_btnApproveBudgetActionPerformed
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
         int selectedRow = tblFinancingRequests1.getSelectedRow();
-        
+
         if (selectedRow >= 0) {
 
             // Check if the salary has been added
@@ -281,7 +285,7 @@ public class HandleFinancesJPanel extends javax.swing.JPanel {
 
                 // Update the salary or perform necessary actions with the amount
                 request.setStatus("Approved");
-                
+
                 Organization org = null;
                 for (Organization organization : business.getOrganizationDirectory().getOrganizationList()) {
                     if (organization instanceof InfrastructureOrganization) {
@@ -289,7 +293,7 @@ public class HandleFinancesJPanel extends javax.swing.JPanel {
                         break;
                     }
                 }
-                
+
                 if (org != null) {
                     WorkRequest req = org.getWorkQueue().getWorkRequestById((Integer) tblFinancingRequests1.getValueAt(selectedRow, 5));
                     req.setStatus("Finance Approved");
@@ -299,6 +303,15 @@ public class HandleFinancesJPanel extends javax.swing.JPanel {
 
                 // Set the result to "Approved" as per your logic
 //            request.setResult("Approved");
+
+
+
+                int column2Value = Integer.parseInt((String) tblFinancingRequests1.getValueAt(selectedRow, 2));
+                int column3Value = Integer.parseInt((String) tblFinancingRequests1.getValueAt(selectedRow, 3));
+
+                int newBudget = business.getBudget() - (column2Value * column3Value);
+                business.setBudget(newBudget);
+                txtTotalBudget.setText(String.valueOf(newBudget));
                 JOptionPane.showMessageDialog(null, "Approved the inventory request", "Information", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(null, "Already Approved", "Information", JOptionPane.INFORMATION_MESSAGE);
@@ -307,7 +320,7 @@ public class HandleFinancesJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a request row!.");
             return;
         }
-        
+
         populateTable();
 
     }//GEN-LAST:event_btnApproveActionPerformed

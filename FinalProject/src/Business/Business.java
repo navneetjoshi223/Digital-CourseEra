@@ -7,6 +7,7 @@ package Business;
 import Business.Enterprise.EnterpriseDirectory;
 import Business.Organization.OrganizationDirectory;
 import Business.Teacher.TeacherDirectory;
+import Expense.ExpenseDirectory;
 import Resources.ResourceDirectory;
 
 /**
@@ -20,6 +21,16 @@ public class Business {
     private EnterpriseDirectory enterpriseDirectory;
     private TeacherDirectory teacherDirectory;
     private ResourceDirectory resourceDirectory;
+    private Integer budget;
+    private ExpenseDirectory expenseDirectory;
+
+    public Integer getBudget() {
+        return budget;
+    }
+
+    public void setBudget(Integer budget) {
+        this.budget = budget;
+    }
 
     public static Business getInstance() {
         if (business == null) {
@@ -33,6 +44,15 @@ public class Business {
         enterpriseDirectory=new EnterpriseDirectory();
         teacherDirectory=new TeacherDirectory();
         resourceDirectory=new ResourceDirectory();
+        expenseDirectory=new ExpenseDirectory();
+    }
+
+    public ExpenseDirectory getExpenseDirectory() {
+        return expenseDirectory;
+    }
+
+    public void setExpenseDirectory(ExpenseDirectory expenseDirectory) {
+        this.expenseDirectory = expenseDirectory;
     }
 
     public TeacherDirectory getTeacherDirectory() {

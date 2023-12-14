@@ -11,7 +11,9 @@ import Business.Teacher.TeacherDirectory;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.FinanceWorkRequest;
 import Business.WorkQueue.WorkRequest;
+import Expense.Expense;
 import java.awt.CardLayout;
+import java.util.HashSet;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -203,7 +205,13 @@ public class HRJPanel extends javax.swing.JPanel {
                     newTeacher.setQualifications(String.valueOf(tblTeacher.getValueAt(selectedRow, 1)));
                     newTeacher.setSubject(String.valueOf(tblTeacher.getValueAt(selectedRow, 2)));
                     newTeacher.setSalary(String.valueOf(tblTeacher.getValueAt(selectedRow, 3)));
-
+                    
+                    
+                    Expense expense=business.getExpenseDirectory().addNewExpense();
+                    expense.setExpenseName(teacherName);
+                    expense.setAmount((Integer) tblTeacher.getValueAt(selectedRow, 3));
+                    expense.setType("teacher");
+                    
                     JOptionPane.showMessageDialog(null, "Teacher Recruited Successfully.Request Admin to create credentials", "Information", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     JOptionPane.showMessageDialog(null, "Please wait for the HR to add the salary.", "Information", JOptionPane.INFORMATION_MESSAGE);
