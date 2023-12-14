@@ -23,6 +23,9 @@ public class TeacherDirectory {
     public ArrayList<Teacher> getTeach() {
         return teach;
     }
+      public int lengthOf() {
+        return teach.size();
+    }
 
     public void setTeach(ArrayList<Teacher> teach) {
         this.teach = teach;

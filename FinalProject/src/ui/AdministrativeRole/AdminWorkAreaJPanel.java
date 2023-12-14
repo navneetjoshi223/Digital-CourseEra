@@ -56,6 +56,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         txtBudget = new javax.swing.JTextField();
         btnBudget = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(102, 102, 255));
         setLayout(null);
@@ -112,6 +113,15 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         });
         add(btnBudget);
         btnBudget.setBounds(520, 190, 110, 23);
+
+        jButton1.setText("View Analytics");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1);
+        jButton1.setBounds(300, 500, 290, 23);
     }// </editor-fold>//GEN-END:initComponents
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
@@ -163,9 +173,17 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     }
     }//GEN-LAST:event_btnBudgetActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         PlatformDataJPanel platformDataJPanel = new PlatformDataJPanel(workArea,business);
+        workArea.add("PlatformDataJPanel", platformDataJPanel);
+        CardLayout layout = (CardLayout) workArea.getLayout();
+        layout.next(workArea);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBudget;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JButton manageEmployeeJButton;
